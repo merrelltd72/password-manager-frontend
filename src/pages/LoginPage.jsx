@@ -2,6 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const jwt = localStorage.getItem("jwt");
+if (jwt) {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+}
+
 const LoginPage = () => {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
@@ -18,7 +23,7 @@ const LoginPage = () => {
           "Bearer " + res.data.jwt;
         localStorage.setItem("jwt", res.data.jwt);
         e.target.reset();
-        navigate("/");
+        navigate("/", { state: { message: "Logged in successfully!" } });
       })
       .catch((error) => {
         console.log(error.response);

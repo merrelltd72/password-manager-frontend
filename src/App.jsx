@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import SignupPage from "./pages/SignupPage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
+import CreateAccountPage from "./pages/CreateAccountPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/", element: <LandingPage /> },
       { path: "/signup", element: <SignupPage /> },
       { path: "/login", element: <LoginPage /> },
+      { path: "/create", element: <CreateAccountPage /> },
     ],
   },
 ]);
