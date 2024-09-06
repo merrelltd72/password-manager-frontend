@@ -1,10 +1,14 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import axios from "axios";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SignupPage from "./pages/SignupPage";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import CreateAccountPage from "./pages/CreateAccountPage";
+import ViewAccountsPage from "./pages/ViewAccountsPage";
+
+axios.defaults.baseURL = "http://localhost:3000";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +24,11 @@ const router = createBrowserRouter([
       { path: "/signup", element: <SignupPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/create", element: <CreateAccountPage /> },
+      {
+        path: "/accounts",
+        element: <ViewAccountsPage />,
+        loader: () => axios.get("/accounts").then((response) => response.data),
+      },
     ],
   },
 ]);
