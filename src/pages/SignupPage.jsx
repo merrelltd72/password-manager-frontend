@@ -1,4 +1,5 @@
 import axios from "axios";
+import PasswordStrengthChecker from "../components/PasswordStrengthChecker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -37,7 +38,7 @@ const SignupPage = () => {
             type="text"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
-
+          <br />
           <label className="block text-gray-600 text-lg font-bold mb-2">
             Email Address:
           </label>
@@ -46,14 +47,12 @@ const SignupPage = () => {
             type="email"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
+          <br />
           <label className="block text-gray-600 text-lg font-bold mb-2">
-            Password
+            Password:
           </label>
-          <input
-            name="password"
-            type="password"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
-          />
+          <PasswordStrengthChecker />
+          <br />
           <label className="block text-gray-600 text-lg font-bold mb-2">
             Password Confirmation:
           </label>
@@ -62,6 +61,7 @@ const SignupPage = () => {
             type="password"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
+          <br />
           <button
             type="submit"
             className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
