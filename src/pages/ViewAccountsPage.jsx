@@ -1,4 +1,5 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
+import Pagination from "../components/Pagination";
 
 const ViewAccountsPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,8 @@ const ViewAccountsPage = () => {
           </div>
         ))}
       </div>
+      <br />
+      <Pagination />
     </div>
   );
 };

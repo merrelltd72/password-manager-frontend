@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -76,6 +77,8 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
+      <br />
+      <GoogleLoginButton />
     </div>
   );
 };

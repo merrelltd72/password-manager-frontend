@@ -25,6 +25,7 @@ const GeneratePassword = () => {
           <legend>GeneratePassword</legend>
           <div>
             <input
+              checked
               name="letters"
               type="checkbox"
               value="true"
@@ -38,6 +39,7 @@ const GeneratePassword = () => {
 
           <div>
             <input
+              checked
               name="numbers"
               type="checkbox"
               value="true"
@@ -51,6 +53,7 @@ const GeneratePassword = () => {
 
           <div>
             <input
+              checked
               name="specialChars"
               type="checkbox"
               value="true"
