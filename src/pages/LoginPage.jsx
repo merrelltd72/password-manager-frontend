@@ -24,7 +24,9 @@ const LoginPage = () => {
           "Bearer " + res.data.jwt;
         localStorage.setItem("jwt", res.data.jwt);
         e.target.reset();
-        navigate("/", { state: { message: "Logged in successfully!" } });
+        navigate("/accounts", {
+          state: { message: "Logged in successfully!" },
+        });
       })
       .catch((error) => {
         console.log(error.response);
