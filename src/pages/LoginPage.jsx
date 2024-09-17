@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -23,7 +24,9 @@ const LoginPage = () => {
           "Bearer " + res.data.jwt;
         localStorage.setItem("jwt", res.data.jwt);
         e.target.reset();
-        navigate("/", { state: { message: "Logged in successfully!" } });
+        navigate("/accounts", {
+          state: { message: "Logged in successfully!" },
+        });
       })
       .catch((error) => {
         console.log(error.response);
@@ -76,6 +79,8 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
+      <br />
+      <GoogleLoginButton />
     </div>
   );
 };

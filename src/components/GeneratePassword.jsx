@@ -3,7 +3,8 @@ import { generatePassword } from "../utils/utils";
 
 const GeneratePassword = () => {
   const [length, setLength] = useState(8);
-  const [letters, setLetters] = useState(true);
+  const [upperCase, setUpperCase] = useState(true);
+  const [lowerCase, setLowerCase] = useState(true);
   const [numbers, setNumbers] = useState(true);
   const [specialChars, setSpecialChars] = useState(true);
 
@@ -11,7 +12,8 @@ const GeneratePassword = () => {
     e.preventDefault();
     let generatedPassword = generatePassword(
       length,
-      letters,
+      upperCase,
+      lowerCase,
       numbers,
       specialChars
     );
@@ -25,10 +27,11 @@ const GeneratePassword = () => {
           <legend>GeneratePassword</legend>
           <div>
             <input
-              name="letters"
+              checked
+              name="upperCase"
               type="checkbox"
               value="true"
-              onChange={() => setLetters(!letters)}
+              onChange={() => setUpperCase(!upperCase)}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -38,6 +41,21 @@ const GeneratePassword = () => {
 
           <div>
             <input
+              checked
+              name="lowerCase"
+              type="checkbox"
+              value="true"
+              onChange={() => setLowerCase(!lowerCase)}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              Letters
+            </label>
+          </div>
+
+          <div>
+            <input
+              checked
               name="numbers"
               type="checkbox"
               value="true"
@@ -51,6 +69,7 @@ const GeneratePassword = () => {
 
           <div>
             <input
+              checked
               name="specialChars"
               type="checkbox"
               value="true"
@@ -72,6 +91,8 @@ const GeneratePassword = () => {
             onChange={(e) => setLength(e.target.value)}
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
+
+          <br />
 
           <button
             type="submit"

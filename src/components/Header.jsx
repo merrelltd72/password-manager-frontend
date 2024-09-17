@@ -1,6 +1,21 @@
+import { useState, useEffect } from "react";
 import LogOut from "../pages/LogOut";
 
 const Header = () => {
+  const [jwt, setJwt] = useState("");
+
+  useEffect(() => {
+    const isLoggedIn = () => {
+      if (localStorage.getItem("jwt")) {
+        const jwt = localStorage.getItem("jwt");
+        setJwt(jwt);
+      } else {
+        setJwt("");
+      }
+    };
+    isLoggedIn();
+  }, [setJwt]);
+
   return (
     /* <header className="bg-blue-500 flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
       <div>
@@ -18,11 +33,21 @@ const Header = () => {
           Password Manager
         </span>
       </div>
-      <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div className="text-sm lg:flex-grow">
-          <a href="/signup">Sign Up</a> | <LogOut />
+      {jwt ? (
+        <div className="w-full block flex-grow lg:flex lg:items-right lg:w-auto">
+          <div className="text-sm lg:flex-grow">
+            <a href="/accounts">Accounts</a> |{" "}
+            <a href="/create">Create An Account</a> |{" "}
+            <a href="/generatepassword">Generate A Password</a> | <LogOut />
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="w-full block flex-grow lg:flex lg:items-right lg:w-auto">
+          <div className="text-sm lg:flex-grow">
+            <a href="/signup">Sign Up</a> | <a href="/login">Login</a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
