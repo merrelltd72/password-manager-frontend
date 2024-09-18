@@ -1,8 +1,14 @@
-# React + Vite
+# Password Manager - Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Password Management Application! This tool will help you securely manage and store your passwords with complete control over its deployment and management. The application has a React frontend and Ruby on Rails backend. Currently it is under construction.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Secure Password Storage:** Encrypts passwords using advanced algorithms.
+- **Customizable Deployment:** Allows users to deploy on various environments (local, server, cloud).
+- **User Management:** Supports multiple user accounts with different access levels.
+- **Backup & Recovery:** Provides options for data backup and recovery.
+- **Multi-Factor Authentication:** Enhances security with additional authentication layers.
+- **Import/Export Passwords:** Easily import and export password data for convenient management.
+
+The backend for this application can be found here -> https://github.com/merrelltd72/password-manager
