@@ -55,6 +55,8 @@ const LoginPage = () => {
             placeholder="user.email@example.com"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
+          <br />
+          <br />
           <label className="block text-gray-600 text-lg font-bold mb-2">
             Password:
           </label>
@@ -63,14 +65,7 @@ const LoginPage = () => {
             type="password"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Email address
-          </label>
-          <input
-            name="password_confirmation"
-            type="password"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
-          />
+
           <button
             type="submit"
             className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"

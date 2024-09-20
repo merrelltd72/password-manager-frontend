@@ -62,6 +62,7 @@ const SignupPage = () => {
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
           <br />
+          <br />
           <button
             type="submit"
             className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"

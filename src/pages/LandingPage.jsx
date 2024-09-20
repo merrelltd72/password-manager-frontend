@@ -15,8 +15,8 @@ const LandingPage = () => {
   useEffect(handleOAuth, []);
 
   return (
-    <div className="container flex items-center justify-between p-6 flex-wrap">
-      LandingPage
+    <div className="container mx-auto h-96 flex items-center justify-center p-6 flex-wrap text-xlg bg-fixed bg-[url('/src/assets/images/smoke-blue-background.jpg')]">
+      <h1 className="text-xlg text-white">Password Manager</h1>
     </div>
   );
 };
