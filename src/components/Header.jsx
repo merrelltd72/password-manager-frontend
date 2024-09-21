@@ -17,30 +17,20 @@ const Header = () => {
   }, [setJwt]);
 
   return (
-    /* <header className="bg-blue-500 flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-      <div>
-       <a href="/">Home</a>
-      </div>
-      <nav>
-        <a href="/signup">Sign Up</a> | <LogOut />
-      </nav>
-    </header>
-    */
-
-    <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6 container">
+    <header className="flex items-center justify-between flex-wrap bg-blue-500 p-6 container">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <span className="font-semibold text-x1 tracking-tight">
+        <span className="font-semibold text-lg tracking-tight">
           <a href="/">Password Manager</a>{" "}
         </span>
       </div>
       {jwt ? (
-        <div className="w-full block flex-grow lg:flex lg:items-right lg:w-auto">
-          <div className="text-sm lg:flex-grow">
+        <nav className="">
+          <div className="text-lg lg:flex-grow">
             <a href="/accounts">Accounts</a> |{" "}
             <a href="/create">Create An Account</a> |{" "}
             <a href="/generatepassword">Generate A Password</a> | <LogOut />
           </div>
-        </div>
+        </nav>
       ) : (
         <div className="w-full block flex-grow lg:flex lg:items-right lg:w-auto">
           <div className="text-sm lg:flex-grow">
@@ -48,7 +38,7 @@ const Header = () => {
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 

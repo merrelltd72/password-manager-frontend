@@ -3,7 +3,7 @@ const Footer = () => {
   const year = today.getFullYear();
 
   return (
-    <footer className="flex items-center justify-center">
+    <footer className="container h-32 bg-blue-500 flex items-center justify-center">
       <h1 className="text-lg">
         <strong>Copyright @{year}</strong>
       </h1>
