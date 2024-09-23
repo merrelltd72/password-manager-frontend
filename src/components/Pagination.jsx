@@ -1,22 +1,33 @@
 import ReactPaginate from "react-paginate";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
-const Pagination = () => {
+const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const showNextButton = currentPage !== totalPages - 1;
+  const showPrevButton = currentPage !== 0;
   return (
     <div>
       <ReactPaginate
         breakLabel={<span className="mr-4">...</span>}
         nextLabel={
-          <span className="w-10 h-10 flex items-center justify-center bg-blue-500 ml-4">
-            <FaAngleRight />
-          </span>
+          showNextButton ? (
+            <span className="w-10 h-10 flex items-center justify-center bg-blue-500 ml-4">
+              <FaAngleRight />
+            </span>
+          ) : null
         }
+        onPageChange={handlePageClick}
         pageRangeDisplayed={5}
-        pageCount={20}
+        pageCount={totalPages}
         previousLabel={
-          <span className="w-10 h-10 flex items-center justify-center bg-blue-500 mr-4">
-            <FaAngleLeft />
-          </span>
+          showPrevButton ? (
+            <span className="w-10 h-10 flex items-center justify-center bg-blue-500 mr-4">
+              <FaAngleLeft />
+            </span>
+          ) : null
         }
         renderOnZeroPageCount={null}
         containerClassName="flex items-center justify-center mt-8 mb-4"
