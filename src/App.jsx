@@ -28,7 +28,6 @@ const router = createBrowserRouter([
       {
         path: "/accounts",
         element: <ViewAccountsPage />,
-        loader: () => axios.get("/accounts").then((response) => response.data),
       },
       { path: "/generatepassword", element: <GeneratePassword /> },
     ],
