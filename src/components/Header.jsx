@@ -14,6 +14,7 @@ const Header = () => {
         setUser(res.data.user);
       } catch (error) {
         setIsLoggedIn(false);
+        console.log(error);
       }
     };
 

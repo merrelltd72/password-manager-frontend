@@ -16,9 +16,9 @@ const LoginPage = () => {
       .then((res) => {
         console.log(res.data);
         e.target.reset();
-        // navigate("/accounts", {
-        //   state: { message: "Logged in successfully!" },
-        // });
+        navigate("/accounts", {
+          state: { message: "Logged in successfully!" },
+        });
       })
       .catch((error) => {
         console.log(error.response);
