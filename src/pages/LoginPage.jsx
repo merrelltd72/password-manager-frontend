@@ -3,11 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 
-const jwt = localStorage.getItem("jwt");
-if (jwt) {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-}
-
 const LoginPage = () => {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
@@ -20,13 +15,10 @@ const LoginPage = () => {
       .post("http://localhost:3000/sessions.json", params)
       .then((res) => {
         console.log(res.data);
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + res.data.jwt;
-        localStorage.setItem("jwt", res.data.jwt);
         e.target.reset();
-        navigate("/accounts", {
-          state: { message: "Logged in successfully!" },
-        });
+        // navigate("/accounts", {
+        //   state: { message: "Logged in successfully!" },
+        // });
       })
       .catch((error) => {
         console.log(error.response);
@@ -65,7 +57,8 @@ const LoginPage = () => {
             type="password"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
-
+          <br />
+          <br />
           <button
             type="submit"
             className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"

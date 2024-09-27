@@ -10,6 +10,7 @@ import ViewAccountsPage from "./pages/ViewAccountsPage";
 import GeneratePassword from "./components/GeneratePassword";
 
 axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
   {
