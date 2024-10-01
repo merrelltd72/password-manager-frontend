@@ -16,9 +16,9 @@ const LoginPage = () => {
       .then((res) => {
         console.log(res.data);
         e.target.reset();
-        // navigate("/accounts", {
-        //   state: { message: "Logged in successfully!" },
-        // });
+        navigate("/accounts", {
+          state: { message: "Logged in successfully!" },
+        });
       })
       .catch((error) => {
         console.log(error.response);
@@ -27,7 +27,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div id="login" className="container w-full max-w-sm">
+    <div id="login" className="container w-full max-w-sm mt-4">
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>

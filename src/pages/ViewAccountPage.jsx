@@ -8,16 +8,22 @@ const ViewAccountPage = ({ account }) => {
     event.preventDefault();
     const params = new FormData(event.target);
     axios
-      .patch(`http://localhost:3000/recipes/${account.id}`, params)
+      .patch(`http://localhost:3000/accounts/${account.id}.json`, params)
       .then(() => {
         navigate("/accounts");
       });
   };
 
+  const handleDestroy = (id) => {
+    axios.delete(`/accounts/${id}.json`).then(() => {
+      navigate("/accounts");
+    });
+  };
+
   return (
     <div>
       <h1>{account.web_app_name}</h1>
-      <form>
+      <form onSubmit={handleUpdate}>
         <div>
           <label className="block text-gray-600 text-lg font-bold mb-2">
             Account Name:
@@ -73,13 +79,16 @@ const ViewAccountPage = ({ account }) => {
         <br />
         <button
           className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
-          onClick={handleUpdate}
+          type="submit"
         >
           Update Account
         </button>
       </form>
       <br />
-      <button className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4">
+      <button
+        className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
+        onClick={handleDestroy}
+      >
         Delete Account
       </button>
     </div>
