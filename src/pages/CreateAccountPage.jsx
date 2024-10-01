@@ -17,7 +17,9 @@ const CreateAccountPage = () => {
         .post("http://localhost:3000/accounts.json", params)
         .then((response) => {
           console.log(response);
-          navigate("/", { state: { message: "Account created successfully" } });
+          navigate("/accounts", {
+            state: { message: "Account created successfully" },
+          });
         })
         .catch((error) => {
           console.log(error.response);
@@ -27,7 +29,7 @@ const CreateAccountPage = () => {
   };
 
   return (
-    <div id="createAccount" className="container w-full max-w-sm">
+    <div id="createAccount" className="container w-full max-w-sm mt-4">
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
@@ -92,7 +94,7 @@ const CreateAccountPage = () => {
             type="submit"
             className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
           >
-            Signup
+            Create Account
           </button>
         </div>
       </form>
