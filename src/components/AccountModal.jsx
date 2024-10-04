@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./AccountModal.css";
 
 const AccountModal = ({ children, show, onClose }) => {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
 
 const CreateAccountPage = () => {
   const [errors, setErrors] = useState([]);
@@ -59,7 +60,7 @@ const CreateAccountPage = () => {
             name="url"
             type="text"
             placeholder="ex. www.facebook.com"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -69,7 +70,7 @@ const CreateAccountPage = () => {
             name="username"
             type="text"
             required
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -78,19 +79,21 @@ const CreateAccountPage = () => {
           <input
             name="password"
             type="password"
+            id="password"
             required
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
+          <TogglePasswordVisibility />
 
-          {/* <label className="block text-gray-600 text-lg font-bold mb-2">
-            Category:
+          <label className="block text-gray-600 text-lg font-bold mb-2">
+            Notes:
           </label>
-          <input
-            name="category_id"
-            type="number"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
-          /> */}
-          <br />
+          <textarea
+            name="notes"
+            rows="5"
+            cols="35"
+            className="rounded"
+          ></textarea>
           <br />
           <label className="block text-gray-600 text-lg font-bold mb-2">
             Category:

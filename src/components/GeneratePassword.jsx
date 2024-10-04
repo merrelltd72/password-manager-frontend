@@ -18,13 +18,16 @@ const GeneratePassword = () => {
       specialChars
     );
     console.log(generatedPassword);
+    document.getElementById("generatedPassword").value = generatedPassword;
   };
 
   return (
     <div id="signup" className="container w-full max-w-sm">
-      <form onSubmit={submitHandler}>
+      <form
+        onSubmit={submitHandler}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
         <fieldset>
-          <legend>GeneratePassword</legend>
           <div>
             <input
               checked
@@ -34,8 +37,8 @@ const GeneratePassword = () => {
               onChange={() => setUpperCase(!upperCase)}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
-            <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Letters
+            <label className="text-gray-600 text-sm font-bold ml-1 mb-2">
+              Uppercase Letters
             </label>
           </div>
 
@@ -48,8 +51,8 @@ const GeneratePassword = () => {
               onChange={() => setLowerCase(!lowerCase)}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
-            <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Letters
+            <label className="text-gray-600 text-sm font-bold ml-1 mb-2">
+              Lowercase Letters
             </label>
           </div>
 
@@ -62,7 +65,7 @@ const GeneratePassword = () => {
               onChange={() => setNumbers(!numbers)}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
-            <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+            <label className="text-gray-600 text-sm font-bold ml-1 mb-2">
               Numbers
             </label>
           </div>
@@ -76,12 +79,12 @@ const GeneratePassword = () => {
               onChange={() => setSpecialChars(!specialChars)}
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
-            <label className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+            <label className="text-gray-600 text-sm font-bold ml-1 mb-2">
               Special Characters
             </label>
           </div>
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
+          <label className="block text-gray-600 text-lg font-bold mt-2 mb-2">
             Password Length:
           </label>
           <input
@@ -89,17 +92,25 @@ const GeneratePassword = () => {
             type="number"
             min="8"
             onChange={(e) => setLength(e.target.value)}
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline mb-2"
           />
-
           <br />
 
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4 mb-2"
           >
             Generate Password
           </button>
+          <br />
+          <br />
+
+          <lable>Generated Password:</lable>
+          <input
+            name="generatedPassword"
+            id="generatedPassword"
+            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline mb-2"
+          ></input>
         </fieldset>
       </form>
     </div>
