@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const ViewAccountPage = ({ account }) => {
+const ViewAccountPage = ({ account, onClose }) => {
   const navigate = useNavigate();
 
   const handleUpdate = (event) => {
@@ -10,14 +10,21 @@ const ViewAccountPage = ({ account }) => {
     axios
       .patch(`http://localhost:3000/accounts/${account.id}.json`, params)
       .then(() => {
+        onClose();
         navigate("/accounts");
+        window.location.reload();
       });
   };
 
   const handleDestroy = (id) => {
-    axios.delete(`/accounts/${id}.json`).then(() => {
-      navigate("/accounts");
-    });
+    axios
+      .delete(`http://localhost:3000/accounts/${account.id}.json`)
+      .then(() => {
+        console.log("Account Deleted!");
+        onClose();
+        navigate("/accounts");
+        window.location.reload();
+      });
   };
 
   return (
@@ -87,7 +94,7 @@ const ViewAccountPage = ({ account }) => {
       <br />
       <button
         className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
-        onClick={handleDestroy}
+        onClick={() => handleDestroy(account.id)}
       >
         Delete Account
       </button>

@@ -47,7 +47,8 @@ const CreateAccountPage = () => {
           <input
             name="web_app_name"
             type="text"
-            placeholder="Facebook"
+            required
+            placeholder="ex. Facebook"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
 
@@ -57,7 +58,7 @@ const CreateAccountPage = () => {
           <input
             name="url"
             type="text"
-            placeholder="www.facebook.com"
+            placeholder="ex. www.facebook.com"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
 
@@ -67,6 +68,7 @@ const CreateAccountPage = () => {
           <input
             name="username"
             type="text"
+            required
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
 
@@ -76,17 +78,28 @@ const CreateAccountPage = () => {
           <input
             name="password"
             type="password"
+            required
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
           />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
+          {/* <label className="block text-gray-600 text-lg font-bold mb-2">
             Category:
           </label>
           <input
             name="category_id"
             type="number"
             className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
-          />
+          /> */}
+          <br />
+          <br />
+          <label className="block text-gray-600 text-lg font-bold mb-2">
+            Category:
+          </label>
+          <select name="category_id" id="category">
+            <option value="1">Personal</option>
+            <option value="2">Work</option>
+            <option value="3">Shared</option>
+          </select>
 
           <br />
           <br />

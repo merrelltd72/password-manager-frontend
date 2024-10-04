@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useAccountFetcher = () => {
-  const API_URL = "http://localhost:3000/accounts.json?per_page=6";
+  const BACKEND_URL = "http://localhost:3000/accounts.json?per_page=6";
   const totalAccounts = 10;
   const [loading, setLoading] = useState(true);
   const [accounts, setAccounts] = useState([]);
@@ -11,7 +11,7 @@ const useAccountFetcher = () => {
   useEffect(() => {
     const fechAccounts = async () => {
       const page = Math.min(currentPage + 1, totalAccounts);
-      const result = await axios.get(`${API_URL}&page=${page}`);
+      const result = await axios.get(`${BACKEND_URL}&page=${page}`);
       console.log(result.data);
       setAccounts(result.data);
       setLoading(false);

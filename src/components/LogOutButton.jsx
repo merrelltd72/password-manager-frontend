@@ -10,6 +10,7 @@ const LogOutButton = () => {
     axios.delete("http://localhost:3000/sessions.json").then((res) => {
       console.log(res);
       navigate("/");
+      window.location.reload();
     });
   };
 

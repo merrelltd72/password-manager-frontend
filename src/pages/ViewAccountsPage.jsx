@@ -7,6 +7,7 @@ import useAccountFetcher from "../components/useAccountFetcher";
 const ViewAccountsPage = () => {
   const { loading, accounts, totalAccounts, currentPage, setCurrentPage } =
     useAccountFetcher();
+  accounts.sort((a, b) => a.web_app_name.localeCompare(b.web_app_name));
   const [isShowVisible, setIsShowVisable] = useState(false);
   const [currentAccount, setCurrentAccount] = useState({});
 
@@ -32,7 +33,7 @@ const ViewAccountsPage = () => {
                 className="max-w-sm p-6 bg-white border border-blue-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
               >
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Accouont Name: {account.web_app_name}
+                  Account Name: {account.web_app_name}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   URL: {account.url}
@@ -52,7 +53,10 @@ const ViewAccountsPage = () => {
             show={isShowVisible}
             onClose={() => setIsShowVisable(false)}
           >
-            <ViewAccountPage account={currentAccount} />
+            <ViewAccountPage
+              account={currentAccount}
+              onClose={() => setIsShowVisable(false)}
+            />
           </AccountModal>
           <br />
           <Pagination
