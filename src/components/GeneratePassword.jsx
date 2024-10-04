@@ -17,7 +17,6 @@ const GeneratePassword = () => {
       numbers,
       specialChars
     );
-    console.log(generatedPassword);
     document.getElementById("generatedPassword").value = generatedPassword;
   };
 
