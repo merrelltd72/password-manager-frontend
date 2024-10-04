@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
 
 const ViewAccountPage = ({ account, onClose }) => {
   const navigate = useNavigate();
@@ -69,8 +71,10 @@ const ViewAccountPage = ({ account, onClose }) => {
             defaultValue={account.password}
             name="password"
             type="password"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline mb-2"
           />
+          <TogglePasswordVisibility />
         </div>
 
         <label className="block text-gray-600 text-lg font-bold mb-2">
