@@ -35,6 +35,7 @@ const Header = () => {
             <a href="/accounts">Accounts</a> |{" "}
             <a href="/create">Create An Account</a> |{" "}
             <a href="/generatepassword">Generate A Password</a> |{" "}
+            <a href="/accountupload">Upload Accounts from a File</a> |{" "}
             <LogOutButton />
           </div>
         </nav>
