@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import CreateAccountPage from "./pages/CreateAccountPage";
 import ViewAccountsPage from "./pages/ViewAccountsPage";
 import GeneratePassword from "./components/GeneratePassword";
+import AccountUploadPage from "./pages/AccountUploadPage";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 
 axios.defaults.baseURL = "http://localhost:3000";
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
         loader: () =>
           axios.get("/accounts.json").then((response) => response.data),
       },
+      { path: "/accountupload", element: <AccountUploadPage /> },
       { path: "/generatepassword", element: <GeneratePassword /> },
       { path: "*", element: <PageNotFoundPage /> },
     ],
