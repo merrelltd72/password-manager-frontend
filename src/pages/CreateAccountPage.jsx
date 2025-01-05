@@ -6,27 +6,24 @@ import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
 const CreateAccountPage = () => {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-  const jwt = localStorage.getItem("jwt");
 
   const submitHandler = (e) => {
     e.preventDefault();
     setErrors([]);
     const params = new FormData(e.target);
-    if (jwt) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-      axios
-        .post("http://localhost:3000/accounts.json", params)
-        .then((response) => {
-          console.log(response);
-          navigate("/accounts", {
-            state: { message: "Account created successfully" },
-          });
-        })
-        .catch((error) => {
-          console.log(error.response);
-          setErrors(["Account could not be created!"]);
+
+    axios
+      .post("http://localhost:3000/accounts.json", params)
+      .then((response) => {
+        console.log(response);
+        navigate("/accounts", {
+          state: { message: "Account created successfully" },
         });
-    }
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setErrors(["Account could not be created!"]);
+      });
   };
 
   return (

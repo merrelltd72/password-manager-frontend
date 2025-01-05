@@ -18,7 +18,7 @@ const ViewAccountPage = ({ account, onClose }) => {
       });
   };
 
-  const handleDestroy = (id) => {
+  const handleDestroy = () => {
     axios
       .delete(`http://localhost:3000/accounts/${account.id}.json`)
       .then(() => {
