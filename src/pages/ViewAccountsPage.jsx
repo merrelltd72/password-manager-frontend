@@ -5,7 +5,7 @@ import Pagination from "../components/Pagination";
 import useAccountFetcher from "../components/useAccountFetcher";
 
 const ViewAccountsPage = () => {
-  const { loading, accounts, totalAccounts, currentPage, setCurrentPage } =
+  const { loading, accounts, pageCount, currentPage, setCurrentPage } =
     useAccountFetcher();
   accounts.sort((a, b) => a.web_app_name.localeCompare(b.web_app_name));
   const [isShowVisible, setIsShowVisable] = useState(false);
@@ -60,7 +60,7 @@ const ViewAccountsPage = () => {
           </AccountModal>
           <br />
           <Pagination
-            totalPages={totalAccounts}
+            pageCount={pageCount}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
