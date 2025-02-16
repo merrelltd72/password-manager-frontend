@@ -1,12 +1,12 @@
 import ReactPaginate from "react-paginate";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
-const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+const Pagination = ({ pageCount, currentPage, setCurrentPage }) => {
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
 
-  const showNextButton = currentPage !== totalPages - 1;
+  const showNextButton = currentPage !== pageCount - 1;
   const showPrevButton = currentPage !== 0;
   return (
     <div>
@@ -21,7 +21,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
         }
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
-        pageCount={totalPages}
+        pageCount={pageCount}
         previousLabel={
           showPrevButton ? (
             <span className="w-10 h-10 flex items-center justify-center bg-blue-500 mr-4">

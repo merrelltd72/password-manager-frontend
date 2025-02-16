@@ -10,6 +10,7 @@ import ViewAccountsPage from "./pages/ViewAccountsPage";
 import GeneratePassword from "./components/GeneratePassword";
 import AccountUploadPage from "./pages/AccountUploadPage";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
+import DisplayAccountsPage from "./pages/DisplayAccountsPage";
 
 axios.defaults.baseURL = "http://localhost:3000";
 axios.defaults.withCredentials = true;
@@ -31,6 +32,12 @@ const router = createBrowserRouter([
       {
         path: "/accounts",
         element: <ViewAccountsPage />,
+        loader: () =>
+          axios.get("/accounts.json").then((response) => response.data),
+      },
+      {
+        path: "/display",
+        element: <DisplayAccountsPage />,
         loader: () =>
           axios.get("/accounts.json").then((response) => response.data),
       },
