@@ -10,7 +10,7 @@ const useAccountFetcher = () => {
 
   useEffect(() => {
     const fechAccounts = async () => {
-      const result = await axios.get(`${BACKEND_URL}?page=${currentPage + 1}`);
+      const result = await axios.get(`${BACKEND_URL}?page=${currentPage}`);
       console.log(result);
       setAccounts(result.data.data);
       setPageCount(Math.ceil(result.data.meta.total_pages));

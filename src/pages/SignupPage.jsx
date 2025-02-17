@@ -1,7 +1,8 @@
 import axios from "axios";
-import PasswordStrengthChecker from "../components/PasswordStrengthChecker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import PasswordStrengthChecker from "../components/PasswordStrengthChecker";
 
 const SignupPage = () => {
   const [errors, setErrors] = useState([]);
@@ -13,8 +14,9 @@ const SignupPage = () => {
     const params = new FormData(e.target);
     axios.post("http://localhost:3000/users.json", params).then((res) => {
       console.log(res.data);
+      toast.success(`${res.data.username}'s account created!`);
       e.target.reset();
-      navigate("/");
+      navigate("/accounts");
     });
   };
 

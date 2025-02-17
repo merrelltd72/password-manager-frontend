@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
 
 const ViewAccountPage = ({ account, onClose }) => {
@@ -12,9 +13,9 @@ const ViewAccountPage = ({ account, onClose }) => {
     axios
       .patch(`http://localhost:3000/accounts/${account.id}.json`, params)
       .then(() => {
+        toast.info("Account successfully updated!");
         onClose();
         navigate("/accounts");
-        window.location.reload();
       });
   };
 
@@ -22,10 +23,10 @@ const ViewAccountPage = ({ account, onClose }) => {
     axios
       .delete(`http://localhost:3000/accounts/${account.id}.json`)
       .then(() => {
-        console.log("Account Deleted!");
+        toast.info("Account successfully deleted!");
         onClose();
+        console.log("Account Deleted!");
         navigate("/accounts");
-        window.location.reload();
       });
   };
 
