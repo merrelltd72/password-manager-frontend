@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 
 const LoginPage = () => {
@@ -14,6 +15,7 @@ const LoginPage = () => {
     axios
       .post("http://localhost:3000/sessions.json", params)
       .then((res) => {
+        toast.success(`${res.data.email} logged in successfuly!`);
         console.log(res.data);
         e.target.reset();
         navigate("/accounts", {
@@ -21,6 +23,7 @@ const LoginPage = () => {
         });
       })
       .catch((error) => {
+        toast.error("Unsuccessful login attempt");
         console.log(error.response);
         setErrors(["Invalid email and/or password."]);
       });

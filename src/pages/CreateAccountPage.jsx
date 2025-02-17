@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
 
 const CreateAccountPage = () => {
@@ -16,6 +17,7 @@ const CreateAccountPage = () => {
       .post("http://localhost:3000/accounts.json", params)
       .then((response) => {
         console.log(response);
+        toast.success("Account created successfully");
         navigate("/accounts", {
           state: { message: "Account created successfully" },
         });
