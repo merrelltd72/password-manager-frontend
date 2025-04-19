@@ -9,8 +9,10 @@ import LoginPage from "./pages/LoginPage";
 import CreateAccountPage from "./pages/CreateAccountPage";
 import ViewAccountsPage from "./pages/ViewAccountsPage";
 import GeneratePassword from "./components/GeneratePassword";
+import CreatePasswordReminderPage from "./pages/CreatePasswordReminderPage";
 import AccountUploadPage from "./pages/AccountUploadPage";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
+
 
 axios.defaults.baseURL = "http://localhost:3000";
 axios.defaults.withCredentials = true;
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
       },
       { path: "/accountupload", element: <AccountUploadPage /> },
       { path: "/generatepassword", element: <GeneratePassword /> },
+      { path: "/createpasswordreminder", element: <CreatePasswordReminderPage />},
       { path: "*", element: <PageNotFoundPage /> },
     ],
   },

@@ -46,6 +46,8 @@ const ViewAccountsPage = () => {
                 >
                   View
                 </button>
+                <br />
+                <a href="/createpasswordreminder" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Create a Password Update Reminder</a>
               </div>
             ))}
           </div>
