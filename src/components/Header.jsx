@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import LogOutButton from "./LogOutButton";
 import axios from "axios";
+import { useLocation } from "react-router";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -19,7 +21,7 @@ const Header = () => {
     };
 
     checkAuthStatus();
-  }, []);
+  }, [location]);
 
   return (
     <header className="flex items-center justify-between flex-wrap bg-blue-500 p-6 container">

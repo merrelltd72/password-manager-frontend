@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
 import Header from "./components/Header";
@@ -10,7 +10,9 @@ import CreateAccountPage from "./pages/CreateAccountPage";
 import ViewAccountsPage from "./pages/ViewAccountsPage";
 import GeneratePassword from "./components/GeneratePassword";
 import AccountUploadPage from "./pages/AccountUploadPage";
+import CreatePasswordReminder from "./pages/CreatePasswordReminder";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
+
 
 axios.defaults.baseURL = "http://localhost:3000";
 axios.defaults.withCredentials = true;
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
       },
       { path: "/accountupload", element: <AccountUploadPage /> },
       { path: "/generatepassword", element: <GeneratePassword /> },
+      { path: "/createpasswordreminder", element: <CreatePasswordReminder /> },
       { path: "*", element: <PageNotFoundPage /> },
     ],
   },
