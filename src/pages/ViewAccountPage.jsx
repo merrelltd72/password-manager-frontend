@@ -7,9 +7,9 @@ import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
 const ViewAccountPage = ({ account, onClose }) => {
   const navigate = useNavigate();
 
-  const handleUpdate = (event) => {
-    event.preventDefault();
-    const params = new FormData(event.target);
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const params = new FormData(e.target);
     axios
       .patch(`http://localhost:3000/accounts/${account.id}.json`, params)
       .then(() => {
