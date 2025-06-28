@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import AccountModal from "../components/AccountModal";
 import ViewAccountPage from "./ViewAccountPage";
 import Pagination from "../components/Pagination";
 import useAccountFetcher from "../components/useAccountFetcher";
-
 const ViewAccountsPage = () => {
   const { loading, accounts, pageCount, currentPage, setCurrentPage } =
     useAccountFetcher();
@@ -42,12 +42,14 @@ const ViewAccountsPage = () => {
                 <button
                   onClick={() => handleView(account)}
                   type="button"
-                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 "
+                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                 >
                   View
                 </button>
                 <br />
-                <a href="/createpasswordreminder" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Create a Password Update Reminder</a>
+                <Link to="/createpasswordreminder" state={{ app_name: account.web_app_name }}>
+                Create Password Update Reminder
+                </Link>
               </div>
             ))}
           </div>

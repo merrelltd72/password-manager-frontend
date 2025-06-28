@@ -9,8 +9,8 @@ import LoginPage from "./pages/LoginPage";
 import CreateAccountPage from "./pages/CreateAccountPage";
 import ViewAccountsPage from "./pages/ViewAccountsPage";
 import GeneratePassword from "./components/GeneratePassword";
-import CreatePasswordReminderPage from "./pages/CreatePasswordReminderPage";
 import AccountUploadPage from "./pages/AccountUploadPage";
+import CreatePasswordReminder from "./pages/CreatePasswordReminder";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 
 
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
       { path: "/accountupload", element: <AccountUploadPage /> },
       { path: "/generatepassword", element: <GeneratePassword /> },
-      { path: "/createpasswordreminder", element: <CreatePasswordReminderPage />},
+      { path: "/createpasswordreminder", element: <CreatePasswordReminder /> },
       { path: "*", element: <PageNotFoundPage /> },
     ],
   },

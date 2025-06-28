@@ -1,11 +1,17 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios'
 import { toast } from "react-toastify";
 
-const CreatePasswordReminderPage = () => {
-  const [web_app_name, setWeb_app_name] = useState('');
-  const [reminderDate, setReminderDate] = useState('');
+const CreatePasswordReminder = () => {
+  const location = useLocation()
+  const { app_name } = location.state
+  const [web_app_name, setWeb_app_name] = useState(app_name);
+  const [reminderDate, setReminderDate] = useState(new Date());
   const [error, setError] = useState(null);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +27,10 @@ const CreatePasswordReminderPage = () => {
     })
   }
 
+  const beforeToday = (reminderDate) => new Date() < reminderDate
+
   return (
-    <div className="container w-full max-w-sm mt-4">
+    <div className="container w-full h-full max-w-sm mt-4 mb-4">
     <form onSubmit={handleSubmit}
     className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -32,13 +40,13 @@ const CreatePasswordReminderPage = () => {
       <br />
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
         Reminder Date:
-        <input type="datetime" value={reminderDate} onChange={(e) => setReminderDate(e.target.value)} />
+        <DatePicker selected={reminderDate} inline filterDate={beforeToday} onChange={(date) => setReminderDate(date)} />
       </label>
       <br />
-      <button type="submit">Create Reminder</button>
+      <button type="submit" className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4">Create Reminder</button>
     </form>
     </div>
   )
 }
 
-export default CreatePasswordReminderPage
+export default CreatePasswordReminder
