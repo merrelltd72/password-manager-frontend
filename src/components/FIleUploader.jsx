@@ -44,7 +44,7 @@ const FIleUploader = () => {
     <div className="container w-full max-w-lg mt-4">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded-sm px-8 pt-6 pb-8 mb-4"
       >
         <input
           type="file"
@@ -56,7 +56,7 @@ const FIleUploader = () => {
         <br />
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4 mb-4 items-center flex justify-between"
+          className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 mb-4 items-center flex justify-between"
         >
           Upload
         </button>

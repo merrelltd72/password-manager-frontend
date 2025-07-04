@@ -38,7 +38,7 @@ const CreateAccountPage = () => {
       <h1>Create Account</h1>
       <form
         onSubmit={submitHandler}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded-sm px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-6">
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -49,7 +49,7 @@ const CreateAccountPage = () => {
             type="text"
             required
             placeholder="ex. Facebook"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -59,7 +59,7 @@ const CreateAccountPage = () => {
             name="url"
             type="text"
             placeholder="ex. www.facebook.com"
-            className="shadow appearance-none border rounded w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -69,7 +69,7 @@ const CreateAccountPage = () => {
             name="username"
             type="text"
             required
-            className="shadow appearance-none border rounded w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -80,7 +80,7 @@ const CreateAccountPage = () => {
             type="password"
             id="password"
             required
-            className="shadow appearance-none border rounded w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
           <TogglePasswordVisibility />
 
@@ -107,7 +107,7 @@ const CreateAccountPage = () => {
           <br />
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
           >
             Create Account
           </button>

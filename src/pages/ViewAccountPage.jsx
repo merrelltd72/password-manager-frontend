@@ -42,7 +42,7 @@ const ViewAccountPage = ({ account, onClose }) => {
             defaultValue={account.web_app_name}
             name="web_app_name"
             type="text"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -52,7 +52,7 @@ const ViewAccountPage = ({ account, onClose }) => {
             defaultValue={account.url}
             name="url"
             type="text"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -62,7 +62,7 @@ const ViewAccountPage = ({ account, onClose }) => {
             defaultValue={account.username}
             name="username"
             type="text"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
           />
 
           <label className="block text-gray-600 text-lg font-bold mb-2">
@@ -73,7 +73,7 @@ const ViewAccountPage = ({ account, onClose }) => {
             name="password"
             type="password"
             id="password"
-            className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline mb-2"
+            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline mb-2"
           />
           <TogglePasswordVisibility />
         </div>
@@ -85,12 +85,12 @@ const ViewAccountPage = ({ account, onClose }) => {
           defaultValue={account.notes}
           name="notes"
           type="text"
-          className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
         />
         <br />
         <br />
         <button
-          className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
+          className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
           type="submit"
         >
           Update Account
@@ -98,7 +98,7 @@ const ViewAccountPage = ({ account, onClose }) => {
       </form>
       <br />
       <button
-        className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
+        className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
         onClick={() => handleDestroy(account.id)}
       >
         Delete Account
