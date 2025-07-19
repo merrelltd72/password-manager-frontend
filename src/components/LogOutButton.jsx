@@ -17,7 +17,7 @@ const LogOutButton = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-green-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4 items-center"
+      className="bg-green-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 items-center"
     >
       <IoIosLogOut />
     </button>

@@ -11,7 +11,7 @@ const AccountModal = ({ children, show, onClose }) => {
           <button
             type="button"
             onClick={onClose}
-            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded py-2 px-4"
+            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
           >
             Close
           </button>

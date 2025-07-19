@@ -47,7 +47,7 @@ const PasswordStrengthChecker = () => {
           value={password}
           onChange={handlePasswordChange}
           placeholder="Enter password here"
-          className="shadow appearance-none border rounded w-full py-1 px-3 text-gray-600 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
         />
       </div>
       <div>
