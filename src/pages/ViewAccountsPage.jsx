@@ -4,6 +4,7 @@ import AccountModal from "../components/AccountModal";
 import ViewAccountPage from "./ViewAccountPage";
 import Pagination from "../components/Pagination";
 import useAccountFetcher from "../components/useAccountFetcher";
+
 const ViewAccountsPage = () => {
   const { loading, accounts, pageCount, currentPage, setCurrentPage } =
     useAccountFetcher();
@@ -47,7 +48,7 @@ const ViewAccountsPage = () => {
                   View
                 </button>
                 <br />
-                <Link to="/createpasswordreminder" state={{ app_name: account.web_app_name }}>
+                <Link to="/createpasswordreminder" state={{ accountId: account.id }}>
                 Create Password Update Reminder
                 </Link>
               </div>
