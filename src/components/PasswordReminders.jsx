@@ -1,15 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import consumer from "../cable";
 import PropTypes from "prop-types";
 
 const PasswordReminders = ({ accountId }) => {
   const [reminder, setReminder] = useState({
-    dueDate: '',
+    dueDate: new Date(),
     frequency: 'monthly'
   });
+  const subscriptionRef = useRef(null);
 
   useEffect(() => {
-    const subscription = consumer.subscriptions.create('RemindersChannel', {
+     subscriptionRef.current = consumer.subscriptions.create('PasswordRemindersChannel', {
       connected() {
         console.log('Connected to reminders channel')
       },
@@ -29,16 +32,23 @@ const PasswordReminders = ({ accountId }) => {
     });
 
     return () => {
-      subscription.unsubscribe();
+      subscriptionRef.current?.unsubscribe();
     };
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    consumer.subscriptions.subscriptions[0].send({
+
+    /*Wait for subscription to be established*/
+    while (!subscriptionRef.current?.subscriptions[0]) {
+      console.log('Waiting for subscription...');
+      await new Promise(resolve => setTimeout(resolve, 100))
+    }
+
+    subscriptionRef.current.subscriptions[0].send({
       action: 'update_reminder',
       account_id: accountId,
-      due_date: reminder.dueDate
+      due_date: reminder.dueDate.toISOString().split('T')[0]
     })
   }
 
@@ -47,15 +57,15 @@ const PasswordReminders = ({ accountId }) => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="due-date">Due Date:</label>
-          <input
-            type="date"
-            id="due-date"
-            value={reminder.dueDate}
-            onChange={(e) => setReminder({...reminder, dueDate: e.target.value})}
-            required
+          <DatePicker id="due-date" selected={reminder.dueDate} 
+          onChange={(date) => setReminder({...reminder, dueDate: date})}
+          minDate={new Date()}
+          dateFormat="yyyy-MM-dd"
+          showDisabledMonthNavigation
+          isClearable
+          placeholderText="Select due date"
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="frequency">Frequency:</label>
           <select
@@ -68,8 +78,7 @@ const PasswordReminders = ({ accountId }) => {
             <option value="yearly">Yearly</option>
           </select>
         </div>
-
-        <button type="submit" className="text-white bg-linear-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save Reminder</button>
+        <button type="submit" className="btn">Save Reminder</button>
       </form>
     </div>
   );
