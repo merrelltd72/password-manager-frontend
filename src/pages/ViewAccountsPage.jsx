@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import AccountModal from "../components/AccountModal";
 import ViewAccountPage from "./ViewAccountPage";
@@ -47,8 +47,11 @@ const ViewAccountsPage = () => {
                   View
                 </button>
                 <br />
-                <Link to="/createpasswordreminder" state={{ app_name: account.web_app_name }}>
-                Create Password Update Reminder
+                <Link
+                  to="/createpasswordreminder"
+                  state={{ app_name: account.web_app_name }}
+                >
+                  Create Password Update Reminder
                 </Link>
               </div>
             ))}
