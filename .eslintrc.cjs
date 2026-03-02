@@ -8,9 +8,13 @@ module.exports = {
     "plugin:react-hooks/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
-  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    ecmaFeatures: { jsx: true },
+  },
   settings: { react: { version: "19.2" } },
-  plugins: ["react-refresh"],
+  plugins: ["react-refresh", "react", "react-hooks", "jsx-a11y", "jest"],
   rules: {
     "react/prop-types": "off",
     "react/jsx-no-target-blank": "off",

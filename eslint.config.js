@@ -1,18 +1,26 @@
 import js from "@eslint/js";
-import globals from "globals";
 import pluginReact from "eslint-plugin-react";
+import pluginJest from "eslint-plugin-jest";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    files: ["**/*.{js,mjs,cjs,jsx}"],
-    plugins: { js },
-    extends: ["eslint:recommended", "plugin:js/recommended"],
+    files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
+    plugins: { js, pluginReact, pluginJest },
+    extends: [
+      "plugin:js/recommended",
+      "plugin:react/recommended",
+      "plugin:jest/recommended",
+    ],
     rules: {
-      "react/jsx-uses-react": "off",
-      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "react/jsx-no-target-blank": "off",
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
     },
-    languageOptions: { globals: globals.browser },
+    ignorePatterns: ["dist", ".eslintrc.cjs"],
+    settings: { react: { version: "latest" } },
   },
-  pluginReact.configs.flat.recommended,
 ]);
