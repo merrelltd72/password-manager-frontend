@@ -15,14 +15,17 @@ const GeneratePassword = () => {
       upperCase,
       lowerCase,
       numbers,
-      specialChars
+      specialChars,
     );
     document.getElementById("generatedPassword").value = generatedPassword;
   };
 
   return (
-    <div id="signup" className="@container w-full place-content-center">
-      <div className="flex justify-center bg-primary">
+    <div
+      id="signup"
+      className="container mx-auto px-4 w-full place-content-center"
+    >
+      <div className="flex justify-center items-center">
         <form
           onSubmit={submitHandler}
           className="bg-white shadow-md rounded-sm border-2 p-8"
