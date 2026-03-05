@@ -22,7 +22,7 @@ const GeneratePassword = () => {
 
   return (
     <div
-      id="signup"
+      id="generatePassword"
       className="container mx-auto px-4 w-full place-content-center"
     >
       <div className="flex justify-center items-center">

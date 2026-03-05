@@ -29,7 +29,7 @@ const CreateAccountPage = () => {
   };
 
   return (
-    <div id="createAccount" className=" flex justify-center items-center mt-4">
+    <div id="createAccount" className="container w-full max-w-sm">
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
