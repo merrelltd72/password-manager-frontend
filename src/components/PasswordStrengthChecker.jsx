@@ -18,23 +18,21 @@ const PasswordStrengthChecker = () => {
   const getScoreLabel = (score) => {
     switch (score) {
       case 0:
-        return (
-          <label className=" block text-lg text-red-600>">Very Weak</label>
-        );
+        return <label className="label text-lg text-red-600">Very Weak</label>;
       case 1:
-        return <label className="block text-lg text-orange-600>">Weak</label>;
+        return <label className="label text-lg text-orange-600">Weak</label>;
       case 2:
         return (
-          <label className="block text-lg text-yellow-600>">Moderate</label>
+          <label className="label text-lg text-yellow-600">Moderate</label>
         );
       case 3:
-        return <label className="block text-lg text-green-600>">Strong</label>;
+        return <label className="label text-lg text-green-600">Strong</label>;
       case 4:
         return (
-          <label className="block text-lg text-green-600>">Very Strong</label>
+          <label className="label text-lg text-green-600">Very Strong</label>
         );
       default:
-        <label className="block text-lg text-gray-600>">Unknown</label>;
+        <label className="label text-lg text-gray-600">Unknown</label>;
     }
   };
 
@@ -47,7 +45,7 @@ const PasswordStrengthChecker = () => {
           value={password}
           onChange={handlePasswordChange}
           placeholder="Enter password here"
-          className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+          className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
         />
       </div>
       <div>

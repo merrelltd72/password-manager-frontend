@@ -29,90 +29,97 @@ const CreateAccountPage = () => {
   };
 
   return (
-    <div id="createAccount" className="container w-full max-w-sm mt-4">
+    <div
+      id="createAccount"
+      className="container mx-auto w-full px-4 place-content-center"
+    >
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <h1>Create Account</h1>
-      <form
-        onSubmit={submitHandler}
-        className="bg-white shadow-md rounded-sm px-8 pt-6 pb-8 mb-4"
-      >
-        <div className="mb-6">
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account Name:
-          </label>
-          <input
-            name="web_app_name"
-            type="text"
-            required
-            placeholder="ex. Facebook"
-            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-          />
+      <div className="flex flex-col justify-center items-center h-screen">
+        <form
+          onSubmit={submitHandler}
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        >
+          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+            <legend className="fieldset-legend text-xl">Create Account</legend>
+            <div className="mb-6">
+              <label className="block text-gray-600 text-lg font-bold mb-2">
+                Account Name:
+              </label>
+              <input
+                name="web_app_name"
+                type="text"
+                required
+                placeholder="ex. Facebook"
+                className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+              />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account URL:
-          </label>
-          <input
-            name="url"
-            type="text"
-            placeholder="ex. www.facebook.com"
-            className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-          />
+              <label className="block text-gray-600 text-lg font-bold mb-2">
+                Account URL:
+              </label>
+              <input
+                name="url"
+                type="text"
+                placeholder="ex. www.facebook.com"
+                className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+              />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account Username:
-          </label>
-          <input
-            name="username"
-            type="text"
-            required
-            className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-          />
+              <label className="block text-gray-600 text-lg font-bold mb-2">
+                Account Username:
+              </label>
+              <input
+                name="username"
+                type="text"
+                required
+                className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+              />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account Password:
-          </label>
-          <input
-            name="password"
-            type="password"
-            id="password"
-            required
-            className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-          />
-          <TogglePasswordVisibility />
+              <label className="block text-gray-600 text-lg font-bold mb-2">
+                Account Password:
+              </label>
+              <input
+                name="password"
+                type="password"
+                id="password"
+                required
+                className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+              />
+              <TogglePasswordVisibility />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Notes:
-          </label>
-          <textarea
-            name="notes"
-            rows="5"
-            cols="35"
-            className="rounded"
-          ></textarea>
-          <br />
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Category:
-          </label>
-          <select name="category_id" id="category">
-            <option value="1">Personal</option>
-            <option value="2">Work</option>
-            <option value="3">Shared</option>
-          </select>
+              <label className="block text-gray-600 text-lg font-bold mb-2">
+                Notes:
+              </label>
+              <textarea
+                name="notes"
+                rows="5"
+                cols="35"
+                className="rounded"
+              ></textarea>
+              <br />
+              <label className="block text-gray-600 text-lg font-bold mb-2">
+                Category:
+              </label>
+              <select name="category_id" id="category">
+                <option value="1">Personal</option>
+                <option value="2">Work</option>
+                <option value="3">Shared</option>
+              </select>
 
-          <br />
-          <br />
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
-          >
-            Create Account
-          </button>
-        </div>
-      </form>
+              <br />
+              <br />
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
+              >
+                Create Account
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
   );
 };
