@@ -17,6 +17,19 @@ const SignupPage = () => {
       toast.success(`${res.data.username}'s account created!`);
       e.target.reset();
       navigate("/accounts");
+    }).catch((error) => {
+      console.log(error.response);
+      const serverErrors =
+        error.response?.data?.errors ||
+        error.response?.data?.error;
+      if (serverErrors) {
+        const messages = Array.isArray(serverErrors)
+          ? serverErrors
+          : [serverErrors];
+        setErrors(messages);
+      } else {
+        setErrors(["Account could not be created. Please try again."]);
+      }
     });
   };
 
