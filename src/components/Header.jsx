@@ -42,7 +42,7 @@ const Header = () => {
           </div>
         </nav>
       ) : (
-        <div className="flex-nonenone">
+        <div className="flex-none">
           <div className="text-sm lg:grow">
             <a href="/signup">Sign Up</a> | <a href="/login">Login</a>
           </div>

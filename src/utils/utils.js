@@ -10,7 +10,7 @@ export function generatePassword(
   const numbersSet = "0123456789";
   const specialCharsSet = "!@#$%^&*()_+[]{}|;:,.<>?";
 
-  let characters = '"';
+  let characters = "";
 
   if (upperCase) characters += upperCaseSet;
   if (lowerCase) characters += lowerCaseSet;
@@ -25,6 +25,5 @@ export function generatePassword(
     password += characters[Math.floor(Math.random() * characters.length)];
   }
 
-  console.log(password);
   return password;
 }
