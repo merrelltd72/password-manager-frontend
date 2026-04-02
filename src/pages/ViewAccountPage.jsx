@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
-
 const ViewAccountPage = ({ account, onClose }) => {
   const navigate = useNavigate();
 
@@ -28,6 +27,15 @@ const ViewAccountPage = ({ account, onClose }) => {
         console.log("Account Deleted!");
         navigate("/accounts");
       });
+  };
+
+  const handleCopyPassword = () => {
+    if (!account.password) return;
+    navigator.clipboard.writeText(account.password).then(() => {
+      toast.success("Password copied to clipboard!");
+    }).catch(() => {
+      toast.error("Failed to copy password. Please copy it manually.");
+    });
   };
 
   return (
@@ -62,13 +70,23 @@ const ViewAccountPage = ({ account, onClose }) => {
           />
 
           <label className="label">Account Password:</label>
-          <input
-            defaultValue={account.password}
-            name="password"
-            type="password"
-            id="password"
-            className="input"
-          />
+          <div className="flex gap-2 items-center">
+            <input
+              defaultValue={account.password}
+              name="password"
+              type="password"
+              id="password"
+              className="input flex-1"
+            />
+            <button
+              type="button"
+              onClick={handleCopyPassword}
+              className="btn btn-sm btn-ghost"
+              title="Copy password to clipboard"
+            >
+              Copy
+            </button>
+          </div>
           <TogglePasswordVisibility />
 
           <label className="label">Notes:</label>

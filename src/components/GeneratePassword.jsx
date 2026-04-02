@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { generatePassword } from "../utils/utils";
+import { toast } from "react-toastify";
 
 const GeneratePassword = () => {
   const [length, setLength] = useState(8);
@@ -7,17 +8,31 @@ const GeneratePassword = () => {
   const [lowerCase, setLowerCase] = useState(true);
   const [numbers, setNumbers] = useState(true);
   const [specialChars, setSpecialChars] = useState(true);
+  const [generatedPassword, setGeneratedPassword] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    let generatedPassword = generatePassword(
-      length,
-      upperCase,
-      lowerCase,
-      numbers,
-      specialChars,
-    );
-    document.getElementById("generatedPassword").value = generatedPassword;
+    try {
+      const pwd = generatePassword(
+        length,
+        upperCase,
+        lowerCase,
+        numbers,
+        specialChars,
+      );
+      setGeneratedPassword(pwd);
+    } catch {
+      toast.error("Please select at least one character type.");
+    }
+  };
+
+  const handleCopy = () => {
+    if (!generatedPassword) return;
+    navigator.clipboard.writeText(generatedPassword).then(() => {
+      toast.success("Password copied to clipboard!");
+    }).catch(() => {
+      toast.error("Failed to copy password. Please copy it manually.");
+    });
   };
 
   return (
@@ -111,12 +126,24 @@ const GeneratePassword = () => {
             <br />
             <br />
 
-            <lable className="label">Generated Password:</lable>
-            <input
-              name="generatedPassword"
-              id="generatedPassword"
-              className=" input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline mb-2"
-            ></input>
+            <label className="label">Generated Password:</label>
+            <div className="flex gap-2">
+              <input
+                readOnly
+                value={generatedPassword}
+                name="generatedPassword"
+                id="generatedPassword"
+                className=" input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline mb-2"
+              />
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="btn bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded-sm py-2 px-3 mb-2"
+                title="Copy to clipboard"
+              >
+                Copy
+              </button>
+            </div>
           </fieldset>
         </form>
       </div>
