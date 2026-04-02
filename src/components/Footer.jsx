@@ -1,11 +1,8 @@
 const Footer = () => {
-  const today = new Date();
-  const year = today.getFullYear();
-
   return (
-    <footer className='footer sm:footer-horizontal footer-center bg-base-500 bg-blue-500 text-base-content p-4'>
+    <footer className="footer sm:footer-horizontal fixed bottom-0 w-full footer-center bg-blue-500 text-base-content p-4">
       <aside>
-        <strong>Copyright @{year}</strong>
+        <strong>Copyright @{new Date().getFullYear()}</strong>
       </aside>
     </footer>
   );

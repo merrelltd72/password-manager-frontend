@@ -7,9 +7,9 @@ const GoogleLoginButton = () => {
   return (
     <button
       onClick={handlelogin}
-      className="w-full bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 mb-4 items-center flex justify-between"
+      className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 mb-4 items-center flex justify-between"
     >
-      <FaGoogle /> Login with Google
+      <FaGoogle /> &nbsp; Login with Google
     </button>
   );
 };

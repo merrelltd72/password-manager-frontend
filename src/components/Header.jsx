@@ -24,14 +24,14 @@ const Header = () => {
   }, [location]);
 
   return (
-    <header className="flex items-center justify-between flex-wrap bg-blue-500 p-6 container">
-      <div className="flex items-center shrink-0 text-white mr-6">
+    <div className="navbar bg-blue-500 shadow-sm">
+      <div className="flex-1">
         <span className="font-semibold text-lg tracking-tight">
           <a href="/">Password Manager</a>{" "}
         </span>
       </div>
       {isLoggedIn ? (
-        <nav className="">
+        <nav className="flex-none">
           <div className="">
             <p>Welcome {user.username}!</p>
             <a href="/accounts">Accounts</a> |{" "}
@@ -42,13 +42,13 @@ const Header = () => {
           </div>
         </nav>
       ) : (
-        <div className="w-full block grow lg:flex lg:items-right lg:w-auto">
+        <div className="flex-none">
           <div className="text-sm lg:grow">
             <a href="/signup">Sign Up</a> | <a href="/login">Login</a>
           </div>
         </div>
       )}
-    </header>
+    </div>
   );
 };
 

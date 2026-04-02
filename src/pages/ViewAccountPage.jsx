@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
-
 const ViewAccountPage = ({ account, onClose }) => {
   const navigate = useNavigate();
 
@@ -30,75 +29,83 @@ const ViewAccountPage = ({ account, onClose }) => {
       });
   };
 
+  const handleCopyPassword = () => {
+    if (!account.password) return;
+    navigator.clipboard.writeText(account.password).then(() => {
+      toast.success("Password copied to clipboard!");
+    }).catch(() => {
+      toast.error("Failed to copy password. Please copy it manually.");
+    });
+  };
+
   return (
     <div>
-      <h1>{account.web_app_name}</h1>
-      <form onSubmit={handleUpdate}>
-        <div>
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account Name:
-          </label>
+      <form onSubmit={handleUpdate} className="form">
+        <fieldset className="fieldset">
+          <legend className="fieldset-legend text-xl">
+            {account.web_app_name}
+          </legend>
+          <label className="label">Account Name:</label>
           <input
             defaultValue={account.web_app_name}
             name="web_app_name"
             type="text"
-            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+            className="input"
           />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account URL:
-          </label>
+          <label className="label">Account URL:</label>
           <input
             defaultValue={account.url}
             name="url"
             type="text"
-            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+            className="input"
           />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account Username:
-          </label>
+          <label className="label">Account Username:</label>
           <input
             defaultValue={account.username}
             name="username"
             type="text"
-            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+            className="input"
           />
 
-          <label className="block text-gray-600 text-lg font-bold mb-2">
-            Account Password:
-          </label>
-          <input
-            defaultValue={account.password}
-            name="password"
-            type="password"
-            id="password"
-            className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline mb-2"
-          />
+          <label className="label">Account Password:</label>
+          <div className="flex gap-2 items-center">
+            <input
+              defaultValue={account.password}
+              name="password"
+              type="password"
+              id="password"
+              className="input flex-1"
+            />
+            <button
+              type="button"
+              onClick={handleCopyPassword}
+              className="btn btn-sm btn-ghost"
+              title="Copy password to clipboard"
+            >
+              Copy
+            </button>
+          </div>
           <TogglePasswordVisibility />
-        </div>
 
-        <label className="block text-gray-600 text-lg font-bold mb-2">
-          Notes:
-        </label>
-        <input
-          defaultValue={account.notes}
-          name="notes"
-          type="text"
-          className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-        />
-        <br />
-        <br />
-        <button
-          className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
-          type="submit"
-        >
-          Update Account
-        </button>
+          <label className="label">Notes:</label>
+          <textarea
+            defaultValue={account.notes}
+            name="notes"
+            type="text"
+            className="textarea h-24"
+          />
+          <br />
+          <br />
+          <button className="btn btn-info mt-4" type="submit">
+            Update Account
+          </button>
+        </fieldset>
       </form>
       <br />
       <button
-        className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
+        className="btn btn-error"
         onClick={() => handleDestroy(account.id)}
       >
         Delete Account
