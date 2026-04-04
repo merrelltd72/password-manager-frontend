@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useAccountFetcher = () => {
-  const BACKEND_URL = "http://localhost:3000/accounts.json";
+  const BACKEND_URL = `${import.meta.env.VITE_API_BASE_URL}/accounts.json`;
   const [loading, setLoading] = useState(true);
   const [accounts, setAccounts] = useState([]);
   const [pageCount, setPageCount] = useState(0);

@@ -10,7 +10,10 @@ const ViewAccountPage = ({ account, onClose }) => {
     e.preventDefault();
     const params = new FormData(e.target);
     axios
-      .patch(`http://localhost:3000/accounts/${account.id}.json`, params)
+      .patch(
+        `${import.meta.env.VITE_API_BASE_URL}/accounts/${account.id}.json`,
+        params,
+      )
       .then(() => {
         toast.info("Account successfully updated!");
         onClose();
@@ -20,7 +23,9 @@ const ViewAccountPage = ({ account, onClose }) => {
 
   const handleDestroy = () => {
     axios
-      .delete(`http://localhost:3000/accounts/${account.id}.json`)
+      .delete(
+        `${import.meta.env.VITE_API_BASE_URL}/accounts/${account.id}.json`,
+      )
       .then(() => {
         toast.info("Account successfully deleted!");
         onClose();
@@ -31,11 +36,14 @@ const ViewAccountPage = ({ account, onClose }) => {
 
   const handleCopyPassword = () => {
     if (!account.password) return;
-    navigator.clipboard.writeText(account.password).then(() => {
-      toast.success("Password copied to clipboard!");
-    }).catch(() => {
-      toast.error("Failed to copy password. Please copy it manually.");
-    });
+    navigator.clipboard
+      .writeText(account.password)
+      .then(() => {
+        toast.success("Password copied to clipboard!");
+      })
+      .catch(() => {
+        toast.error("Failed to copy password. Please copy it manually.");
+      });
   };
 
   return (

@@ -3,8 +3,9 @@ import { createConsumer } from "@rails/actioncable";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PropTypes from "prop-types";
+import { data } from "autoprefixer";
 
-const cableUrl = import.meta.env.VITE_CABLE_URL || "ws://localhost:3000/cable";
+const cableUrl = `${import.meta.env.VITE_CABLE_URL}` || "ws://localhost:3000/cable";
 
 const consumer = createConsumer(cableUrl);
 
@@ -51,7 +52,7 @@ export default function PasswordReminders() {
 
   return (
     <div>
-      <button onClick={() => createReminder(1, "2026-03-30")}>
+      <button onClick={() => createReminder(data.accountId, "2026-03-30")}>
         Create Reminder
       </button>
 

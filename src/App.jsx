@@ -13,8 +13,7 @@ import AccountUploadPage from "./pages/AccountUploadPage";
 import CreatePasswordReminder from "./pages/CreatePasswordReminder";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 
-
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = `${import.meta.env.VITE_API_BASE_URL}`;
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
