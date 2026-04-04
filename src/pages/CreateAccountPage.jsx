@@ -14,7 +14,7 @@ const CreateAccountPage = () => {
     const params = new FormData(e.target);
 
     axios
-      .post("http://localhost:3000/accounts.json", params)
+      .post(`${import.meta.env.VITE_API_BASE_URL}/accounts.json`, params)
       .then((response) => {
         console.log(response);
         toast.success("Account created successfully");

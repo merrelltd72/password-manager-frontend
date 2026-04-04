@@ -5,4 +5,9 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  define: {
+    "import.meta.env.VITE_CABLE_API_URL": JSON.stringify(
+      "http://localhost:3000/cable",
+    ),
+  },
 });

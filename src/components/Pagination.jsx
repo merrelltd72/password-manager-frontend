@@ -1,40 +1,98 @@
-import ReactPaginate from "react-paginate";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import React from "react";
 
-const Pagination = ({ pageCount, currentPage, setCurrentPage }) => {
-  const handlePageClick = ({ selected }) => {
-    setCurrentPage(selected);
+const Pagination = ({ pageCount = 0, currentPage = 0, setCurrentPage }) => {
+  if (!pageCount || pageCount <= 1) return null;
+
+  const goToPage = (page) => {
+    if (page < 0 || page >= pageCount) return;
+    setCurrentPage(page);
   };
 
-  const showNextButton = currentPage !== pageCount - 1;
-  const showPrevButton = currentPage !== 0;
+  const getPages = () => {
+    const windowSize = 5;
+    let start = Math.max(0, currentPage - Math.floor(windowSize / 2));
+    let end = Math.min(pageCount - 1, start + windowSize - 1);
+
+    if (end - start + 1 < windowSize) {
+      start = Math.max(0, end - windowSize + 1);
+    }
+
+    const pages = [];
+    for (let i = start; i <= end; i++) pages.push(i);
+    return pages;
+  };
+
+  const pages = getPages();
+  const showLeftDots = pages[0] > 1;
+  const showRightDots = pages[pages.length - 1] < pageCount - 2;
+
   return (
-    <div>
-      <ReactPaginate
-        breakLabel={<span className="mr-4">...</span>}
-        nextLabel={
-          showNextButton ? (
-            <span className="w-10 h-10 flex items-center justify-center bg-blue-500 ml-4">
-              <FaAngleRight />
-            </span>
-          ) : null
-        }
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel={
-          showPrevButton ? (
-            <span className="w-10 h-10 flex items-center justify-center bg-blue-500 mr-4">
-              <FaAngleLeft />
-            </span>
-          ) : null
-        }
-        renderOnZeroPageCount={null}
-        containerClassName="flex items-center justify-center mt-8 mb-4"
-        pageClassName="block border border-solid border-blue-500 hover:bg-blue-500 w-10 h-10 flex items-center justify-center rounded-md mr-2"
-        activeClassName="bg-blue-500 text-white"
-      />
-    </div>
+    <nav
+      className="flex items-center justify-center mt-8 mb-4 gap-2"
+      aria-label="Pagination"
+    >
+      <button
+        type="button"
+        onClick={() => goToPage(currentPage - 1)}
+        disabled={currentPage === 0}
+        className="w-10 h-10 border border-blue-500 rounded-md disabled:opacity-40"
+        aria-label="Previous page"
+      >
+        ‹
+      </button>
+
+      {pages[0] > 0 && (
+        <>
+          <button
+            type="button"
+            onClick={() => goToPage(0)}
+            className="w-10 h-10 border border-blue-500 rounded-md"
+          >
+            1
+          </button>
+          {showLeftDots && <span className="px-1">...</span>}
+        </>
+      )}
+
+      {pages.map((page) => (
+        <button
+          key={page}
+          type="button"
+          onClick={() => goToPage(page)}
+          className={`w-10 h-10 border border-blue-500 rounded-md ${
+            page === currentPage
+              ? "bg-blue-500 text-white"
+              : "hover:bg-blue-500 hover:text-white"
+          }`}
+          aria-current={page === currentPage ? "page" : undefined}
+        >
+          {page + 1}
+        </button>
+      ))}
+
+      {pages[pages.length - 1] < pageCount - 1 && (
+        <>
+          {showRightDots && <span className="px-1">...</span>}
+          <button
+            type="button"
+            onClick={() => goToPage(pageCount - 1)}
+            className="w-10 h-10 border border-blue-500 rounded-md"
+          >
+            {pageCount}
+          </button>
+        </>
+      )}
+
+      <button
+        type="button"
+        onClick={() => goToPage(currentPage + 1)}
+        disabled={currentPage === pageCount - 1}
+        className="w-10 h-10 border border-blue-500 rounded-md disabled:opacity-40"
+        aria-label="Next page"
+      >
+        ›
+      </button>
+    </nav>
   );
 };
 
