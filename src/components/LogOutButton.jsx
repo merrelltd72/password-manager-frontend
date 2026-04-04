@@ -7,11 +7,13 @@ const LogOutButton = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    axios.delete("http://localhost:3000/sessions.json").then((res) => {
-      console.log(res);
-      navigate("/");
-      window.location.reload();
-    });
+    axios
+      .delete(`${import.meta.env.VITE_API_BASE_URL}/sessions.json`)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+        window.location.reload();
+      });
   };
 
   return (

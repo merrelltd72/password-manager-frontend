@@ -2,7 +2,7 @@ import { FaGoogle } from "react-icons/fa6";
 
 const GoogleLoginButton = () => {
   const handlelogin = () => {
-    window.location.href = "http://localhost:3000/auth/google_oauth2";
+    window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/google_oauth2`;
   };
   return (
     <button

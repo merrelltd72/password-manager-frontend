@@ -13,7 +13,7 @@ const LoginPage = () => {
     setErrors([]);
     const params = new FormData(e.target);
     axios
-      .post("http://localhost:3000/sessions.json", params)
+      .post(`${import.meta.env.VITE_API_BASE_URL}/sessions.json`, params)
       .then((res) => {
         toast.success(`${res.data.email} logged in successfuly!`);
         console.log(res.data);
