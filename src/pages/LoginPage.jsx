@@ -74,13 +74,13 @@ const LoginPage = () => {
               >
                 Login
               </button>
+              <div className="divider">OR</div>
+              <div className="flex justify-center items-center">
+                <GoogleLoginButton />
+              </div>
             </div>
           </fieldset>
         </form>
-      </div>
-      <div className="divider">OR</div>
-      <div className="flex justify-center items-center">
-        <GoogleLoginButton />
       </div>
     </div>
   );
