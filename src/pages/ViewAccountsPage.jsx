@@ -10,13 +10,14 @@ const CATEGORY_LABELS = { 1: "Personal", 2: "Work", 3: "Shared" };
 const ViewAccountsPage = () => {
   const { loading, accounts, pageCount, currentPage, setCurrentPage } =
     useAccountFetcher();
-  accounts.sort((a, b) => a.web_app_name.localeCompare(b.web_app_name));
+
   const [isShowVisible, setIsShowVisable] = useState(false);
   const [currentAccount, setCurrentAccount] = useState({});
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState(0);
 
   const filteredAccounts = useMemo(() => {
+    accounts.sort((a, b) => a.web_app_name.localeCompare(b.web_app_name));
     return accounts.filter((account) => {
       const matchesSearch = account.web_app_name
         .toLowerCase()
