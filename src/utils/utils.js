@@ -3,7 +3,7 @@ export function generatePassword(
   upperCase,
   lowerCase,
   numbers,
-  specialChars
+  specialChars,
 ) {
   const upperCaseSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowerCaseSet = "abcdefghijklmnopqrstuvwxyz";
@@ -22,7 +22,8 @@ export function generatePassword(
   let password = "";
 
   while (length > password.length) {
-    password += characters[Math.floor(Math.random() * characters.length)];
+    password +=
+      characters[Math.floor(crypto.getRandomValues() * characters.length)];
   }
 
   return password;
