@@ -1,4 +1,4 @@
-import("zxcvbn");
+import zxcvbn from "zxcvbn";
 import { useState } from "react";
 
 const PasswordStrengthChecker = () => {
