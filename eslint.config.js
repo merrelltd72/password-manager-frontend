@@ -1,26 +1,32 @@
 import js from "@eslint/js";
+import globals from "globals";
 import pluginReact from "eslint-plugin-react";
-import pluginJest from "eslint-plugin-jest";
+import pluginReactHooks from "eslint-plugin-react-hooks";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
+    ignores: ["dist", "build", "node_modules"],
+  },
+  {
     files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
-    plugins: { js, pluginReact, pluginJest },
-    extends: [
-      "plugin:js/recommended",
-      "plugin:react/recommended",
-      "plugin:jest/recommended",
-    ],
-    rules: {
-      "react/prop-types": "off",
-      "react/jsx-no-target-blank": "off",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+    languageOptions: {
+      ecmaVersion: "2020",
+      sourceType: "module",
+      globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
     },
-    ignorePatterns: ["dist", ".eslintrc.cjs"],
+    plugins: { js, react: pluginReact, "react-hooks": pluginReactHooks },
     settings: { react: { version: "latest" } },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...pluginReact.configs.recommended.rules,
+      ...pluginReactHooks.configs.recommended.rules,
+      'react/prop-types': 'off',
+      'react/jsx-no-target-blank': 'off',
+      'react/react-in-jsx-scope': 'off',
+    },
   },
 ]);
