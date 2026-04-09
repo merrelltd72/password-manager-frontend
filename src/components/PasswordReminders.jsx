@@ -21,6 +21,12 @@ export default function PasswordReminders({ accountId }) {
         minDate={new Date()}
         placeholderText="Select a date to set a password reminder"
       />
+      <p>
+        Current reminder is set for{" "}
+        {reminders.reminderDate
+          ? new Date(reminders.reminderDate).toLocaleDateString()
+          : "none"}
+      </p>
       <button onClick={handleSubmit} disabled={!reminderDate}>
         Create Reminder
       </button>

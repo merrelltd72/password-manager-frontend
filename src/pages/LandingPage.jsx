@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import heroBg from "../assets/images/smoke-blue-background.jpg";
-import { use } from "react";
 
 const LandingPage = () => {
   useEffect(() => {
@@ -22,7 +21,7 @@ const LandingPage = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-blue-900/55 to-slate-900/75" />
+      <div className="absolute inset-0 bg-linear-to-b from-slate-900/70 via-blue-900/55 to-slate-900/75" />
 
       <section className="relative mx-auto flex min-h-screen max-w-6xl items-center px-6 py-24 md:px-10">
         <div className="max-w-2xl text-white">
