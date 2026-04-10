@@ -51,7 +51,10 @@ const router = createBrowserRouter([
       },
       { path: "/accountupload", element: <AccountUploadPage /> },
       { path: "/generatepassword", element: <GeneratePassword /> },
-      { path: "/createpasswordreminder", element: <CreatePasswordReminder /> },
+      {
+        path: "/createpasswordreminder/:accountId",
+        element: <CreatePasswordReminder />,
+      },
       { path: "*", element: <PageNotFoundPage /> },
     ],
   },
