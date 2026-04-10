@@ -1,29 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import axios from "axios";
+import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { createPasswordRemindersSubscription } from "../utils/passwordRemindersSubscription";
 
 export function usePasswordReminderToasts(accountId) {
-  const [reminders, setReminders] = useState([]);
   const subscriptionRef = useRef(null);
 
-  const fetchReminders = useCallback(() => {
+  useEffect(() => {
     if (!accountId) return;
-    axios
-      .get(
-        `${import.meta.env.VITE_API_BASE_URL}/accounts/${accountId}/password_reimders.json`,
-      )
-      .then((res) => setReminders(res.data));
-  }, [accountId]);
 
-  useEffect(() => {
-    fetchReminders();
-  }, [fetchReminders]);
-
-  useEffect(() => {
     subscriptionRef.current = createPasswordRemindersSubscription({
       onReminder(reminder) {
-        setReminders((current) => [...current, reminder]);
         toast.success(
           `Reminder scheduled for account #${reminder.account_id} on ${reminder.reminder_date}`,
         );
@@ -37,14 +23,12 @@ export function usePasswordReminderToasts(accountId) {
       subscriptionRef.current?.unsubscribe();
       subscriptionRef.current = null;
     };
-  }, [fetchReminders]);
+  }, [accountId]);
 
   const createReminder = (payload) => {
+    console.log("Creating reminder with payload:", payload);
     subscriptionRef.current?.createReminder(payload);
   };
 
-  return {
-    reminders,
-    createReminder,
-  };
+  return { createReminder };
 }

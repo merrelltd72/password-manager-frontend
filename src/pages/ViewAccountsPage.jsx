@@ -17,15 +17,18 @@ const ViewAccountsPage = () => {
   const [categoryFilter, setCategoryFilter] = useState(0);
 
   const filteredAccounts = useMemo(() => {
-    accounts.sort((a, b) => a.web_app_name.localeCompare(b.web_app_name));
-    return accounts.filter((account) => {
-      const matchesSearch = account.web_app_name
-        .toLowerCase()
-        .includes(search.toLowerCase());
-      const matchesCategory =
-        categoryFilter === 0 || account.category_id === categoryFilter;
-      return matchesSearch && matchesCategory;
-    });
+    const normalizedSearch = search.toLowerCase();
+
+    return [...accounts]
+      .sort((a, b) => a.web_app_name.localeCompare(b.web_app_name))
+      .filter((account) => {
+        const matchesSearch = account.web_app_name
+          .toLowerCase()
+          .includes(normalizedSearch);
+        const matchesCategory =
+          categoryFilter === 0 || account.category_id === categoryFilter;
+        return matchesSearch && matchesCategory;
+      });
   }, [accounts, search, categoryFilter]);
 
   const handleView = (account) => {
@@ -99,10 +102,14 @@ const ViewAccountsPage = () => {
                   </button>
                   <br />
                   <Link
-                    to="/createpasswordreminder"
-                    state={{ app_name: account.web_app_name }}
+                    to={`/createpasswordreminder/${account.id}`}
+                    state={{
+                      app_name: account.web_app_name,
+                    }}
                   >
-                    Create Password Update Reminder
+                    <button className="text-white bg-linear-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                      Create Password Update Reminder
+                    </button>
                   </Link>
                 </div>
               ))}
