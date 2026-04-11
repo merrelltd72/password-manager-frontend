@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 import { createContext, useContext, useMemo, useReducer } from "react";
 
 const AuthStateContext = createContext(null);
@@ -7,7 +6,6 @@ const AuthDispatchContext = createContext(null);
 const initialAuthState = {
   isAuthenticated: false,
   user: null,
-  token: null,
 };
 
 function authReducer(state, action) {
@@ -16,20 +14,17 @@ function authReducer(state, action) {
       return {
         isAuthenticated: true,
         user: action.payload.user,
-        token: action.payload.token,
       };
     case "LOGOUT":
       return {
         isAuthenticated: false,
         user: null,
-        token: null,
       };
 
     case "RESTORE_SESSION":
       return {
-        isAuthenticated: !!action.payload?.token,
+        isAuthenticated: !!action.payload?.user,
         user: action.payload?.user ?? null,
-        token: action.payload?.token ?? null,
       };
 
     default:
