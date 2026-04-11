@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import GoogleLoginButton from "../components/GoogleLoginButton";
+import { useAuthDispatch } from "../context/AuthContext";
 
 const LoginPage = () => {
+  const dispatch = useAuthDispatch();
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
@@ -16,7 +18,16 @@ const LoginPage = () => {
       .post(`${import.meta.env.VITE_API_BASE_URL}/sessions.json`, params)
       .then((res) => {
         toast.success(`${res.data.email} logged in successfuly!`);
-        console.log(res.data);
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: {
+            user: {
+              email: res.data.email,
+              username: res.data.username,
+              id: res.data.id,
+            },
+          },
+        });
         e.target.reset();
         navigate("/accounts", {
           state: { message: "Logged in successfully!" },
