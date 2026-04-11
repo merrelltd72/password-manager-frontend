@@ -1,16 +1,17 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router";
 import AccountModal from "../components/AccountModal";
 import ViewAccountPage from "./ViewAccountPage";
 import Pagination from "../components/Pagination";
 import useAccountFetcher from "../components/useAccountFetcher";
+import { useUIDispatch } from "../context/UIContext";
 
 const CATEGORY_LABELS = { 1: "Personal", 2: "Work", 3: "Shared" };
 
 const ViewAccountsPage = () => {
   const { loading, accounts, pageCount, currentPage, setCurrentPage } =
     useAccountFetcher();
-
+  const uiDispatch = useUIDispatch();
   const [isShowVisible, setIsShowVisable] = useState(false);
   const [currentAccount, setCurrentAccount] = useState({});
   const [search, setSearch] = useState("");
@@ -31,9 +32,13 @@ const ViewAccountsPage = () => {
       });
   }, [accounts, search, categoryFilter]);
 
-  const handleView = (account) => {
-    setIsShowVisable(true);
+  const handleOpenModal = (account) => {
     setCurrentAccount(account);
+    uiDispatch({ type: "OPEN_ACCOUNT_MODAL" });
+  };
+
+  const handleCloseModal = () => {
+    uiDispatch({ type: "CLOSE_ACCOUNT_MODAL" });
   };
 
   return (
@@ -94,7 +99,7 @@ const ViewAccountsPage = () => {
                   )}
                   <br />
                   <button
-                    onClick={() => handleView(account)}
+                    onClick={() => handleOpenModal(account)}
                     type="button"
                     className="text-white bg-linear-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                   >
@@ -115,13 +120,10 @@ const ViewAccountsPage = () => {
               ))}
             </div>
           )}
-          <AccountModal
-            show={isShowVisible}
-            onClose={() => setIsShowVisable(false)}
-          >
+          <AccountModal>
             <ViewAccountPage
               account={currentAccount}
-              onClose={() => setIsShowVisable(false)}
+              onClose={handleCloseModal}
             />
           </AccountModal>
           <br />

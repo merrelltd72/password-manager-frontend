@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import PasswordStrengthChecker from "../components/PasswordStrengthChecker";
+import { useAuthDispatch } from "../context/AuthContext";
 
 const SignupPage = () => {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useAuthDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -15,7 +17,16 @@ const SignupPage = () => {
     axios
       .post(`${import.meta.env.VITE_API_BASE_URL}/users.json`, params)
       .then((res) => {
-        console.log(res.data);
+        dispatch({
+          type: "LOGIN_SUCCESS",
+          payload: {
+            user: res.data.user ?? {
+              email: res.data.email,
+              username: res.data.username,
+              id: res.data.id,
+            },
+          },
+        });
         toast.success(`${res.data.username}'s account created!`);
         e.target.reset();
         navigate("/accounts");
