@@ -16,6 +16,7 @@ import axios from "axios";
 
 const Header = lazy(() => import("./components/Header"));
 const Footer = lazy(() => import("./components/Footer"));
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
 const SignupPage = lazy(() => import("./pages/SignupPage"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -44,16 +45,21 @@ const router = createBrowserRouter([
       { path: "/", element: <LandingPage /> },
       { path: "/signup", element: <SignupPage /> },
       { path: "/login", element: <LoginPage /> },
-      { path: "/create", element: <CreateAccountPage /> },
       {
-        path: "/accounts",
-        element: <ViewAccountsPage />,
-      },
-      { path: "/accountupload", element: <AccountUploadPage /> },
-      { path: "/generatepassword", element: <GeneratePassword /> },
-      {
-        path: "/createpasswordreminder/:accountId",
-        element: <CreatePasswordReminder />,
+        element: <ProtectedRoute />,
+        children: [
+          { path: "/create", element: <CreateAccountPage /> },
+          {
+            path: "/accounts",
+            element: <ViewAccountsPage />,
+          },
+          { path: "/accountupload", element: <AccountUploadPage /> },
+          { path: "/generatepassword", element: <GeneratePassword /> },
+          {
+            path: "/createpasswordreminder/:accountId",
+            element: <CreatePasswordReminder />,
+          },
+        ],
       },
       { path: "*", element: <PageNotFoundPage /> },
     ],
