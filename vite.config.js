@@ -10,4 +10,9 @@ export default defineConfig({
       "http://localhost:3000/cable",
     ),
   },
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.js"],
+    globals: true,
+  },
 });
