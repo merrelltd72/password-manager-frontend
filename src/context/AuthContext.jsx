@@ -9,7 +9,7 @@ const initialAuthState = {
   isAuthResolved: false,
 };
 
-function authReducer(state, action) {
+export function authReducer(state, action) {
   switch (action.type) {
     case "LOGIN_SUCCESS":
       return {

@@ -11,7 +11,7 @@ const initialUIState = {
   error: null,
 };
 
-function uiReducer(state, action) {
+export function uiReducer(state, action) {
   switch (action.type) {
     case "OPEN_ACCOUNT_MODAL":
       return { ...state, isAccountModalOpen: true };

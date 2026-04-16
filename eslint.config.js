@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import globals from "globals";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
+import pluginJest from "eslint-plugin-jest";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig([
@@ -27,6 +28,22 @@ export default defineConfig([
       "react/prop-types": "off",
       "react/jsx-no-target-blank": "off",
       "react/react-in-jsx-scope": "off",
+    },
+  },
+  // Test files config
+  {
+    files: ["**/__tests__/**/*.{js,jsx}", "**/*.test.{js,jsx}"],
+    plugins: { jest: pluginJest },
+    languageOptions: {
+      globals: {
+        ...pluginJest.environments.globals.globals,
+      },
+    },
+    settings: {
+      jest: { version: "detect" },
+    },
+    rules: {
+      ...pluginJest.configs.recommended.rules,
     },
   },
 ]);
