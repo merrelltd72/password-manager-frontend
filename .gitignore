@@ -23,3 +23,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Planning items
+DASHBOARD_PROFILE_IMPLEMENTATION_PLAN.md
