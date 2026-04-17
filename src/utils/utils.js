@@ -21,9 +21,11 @@ export function generatePassword(
 
   let password = "";
 
-  while (length > password.length) {
-    password +=
-      characters[Math.floor(crypto.getRandomValues() * characters.length)];
+  const array = new Uint32Array(length);
+  crypto.getRandomValues(array);
+
+  for (let i = 0; i < length; i++) {
+    password += characters[array[i] % characters.length];
   }
 
   return password;
