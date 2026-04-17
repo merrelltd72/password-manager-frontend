@@ -1,6 +1,19 @@
 import { useAuthState } from "../context/AuthContext";
 import LogOutButton from "./LogOutButton";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
+import {
+  ROUTES,
+  AUTHENTICATED_NAV_ITEMS,
+  GUEST_NAV_ITEMS,
+} from "../constants/routes";
+
+const authLinkClassName = ({ isActive }) =>
+  [
+    "rounded-md border px-3 py-1.5 text-sm font-medium transition",
+    isActive
+      ? "border-white bg-white text-blue-700"
+      : "border-white/35 bg-white/10 hover:bg-white hover:text-blue-700",
+  ].join(" ");
 
 const Header = () => {
   const { isAuthenticated, user } = useAuthState();
@@ -9,7 +22,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-blue-300/30 bg-blue-500/95 text-white shadow-md backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
         <Link
-          to="/"
+          to={ROUTES.home}
           className="text-lg font-bold tracking-tight transition-opacity hover:opacity-90 sm:text-xl"
         >
           Password Manager
@@ -21,30 +34,16 @@ const Header = () => {
               Welcome {user?.username || user?.email}!
             </p>
 
-            <Link
-              to="/accounts"
-              className="rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-medium transition hover:bg-white hover:text-blue-700"
-            >
-              Accounts
-            </Link>
-            <Link
-              to="/create"
-              className="rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-medium transition hover:bg-white hover:text-blue-700"
-            >
-              Create Account
-            </Link>
-            <Link
-              to="/generatepassword"
-              className="rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-medium transition hover:bg-white hover:text-blue-700"
-            >
-              Generate Password
-            </Link>
-            <Link
-              to="/accountupload"
-              className="rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-medium transition hover:bg-white hover:text-blue-700"
-            >
-              Upload File
-            </Link>
+            {AUTHENTICATED_NAV_ITEMS.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.to === ROUTES.accounts}
+                className={authLinkClassName}
+              >
+                {item.label}
+              </NavLink>
+            ))}
 
             <div className="ml-1">
               <LogOutButton />
@@ -52,18 +51,19 @@ const Header = () => {
           </nav>
         ) : (
           <nav className="flex items-center gap-2">
-            <Link
-              to="/signup"
-              className="rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-semibold transition hover:bg-white hover:text-blue-700"
-            >
-              Sign Up
-            </Link>
-            <Link
-              to="/login"
-              className="rounded-md border border-white bg-white px-3 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-            >
-              Login
-            </Link>
+            {GUEST_NAV_ITEMS.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={
+                  item.to === ROUTES.login
+                    ? "rounded-md border border-white bg-white px-3 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+                    : "rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-semibold transition hover:bg-white hover:text-blue-700"
+                }
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         )}
       </div>

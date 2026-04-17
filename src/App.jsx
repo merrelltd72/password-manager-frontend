@@ -2,17 +2,7 @@ import { lazy } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
-// import SignupPage from "./pages/SignupPage";
-// import LandingPage from "./pages/LandingPage";
-// import LoginPage from "./pages/LoginPage";
-// import CreateAccountPage from "./pages/CreateAccountPage";
-// import ViewAccountsPage from "./pages/ViewAccountsPage";
-// import GeneratePassword from "./components/GeneratePassword";
-// import AccountUploadPage from "./pages/AccountUploadPage";
-// import CreatePasswordReminder from "./pages/CreatePasswordReminder";
-// import PageNotFoundPage from "./pages/PageNotFoundPage";
+import { ROUTES } from "./constants/routes";
 
 const Header = lazy(() => import("./components/Header"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -29,7 +19,7 @@ const CreatePasswordReminder = lazy(
 );
 const PageNotFoundPage = lazy(() => import("./pages/PageNotFoundPage"));
 
-axios.defaults.baseURL = `${import.meta.env.VITE_API_BASE_URL}`;
+axios.defaults.baseURL = String(`${import.meta.env.VITE_API_BASE_URL}`);
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
@@ -42,21 +32,21 @@ const router = createBrowserRouter([
       </>
     ),
     children: [
-      { path: "/", element: <LandingPage /> },
-      { path: "/signup", element: <SignupPage /> },
-      { path: "/login", element: <LoginPage /> },
+      { path: ROUTES.home, element: <LandingPage /> },
+      { path: ROUTES.signup, element: <SignupPage /> },
+      { path: ROUTES.login, element: <LoginPage /> },
       {
         element: <ProtectedRoute />,
         children: [
-          { path: "/create", element: <CreateAccountPage /> },
+          { path: ROUTES.create, element: <CreateAccountPage /> },
           {
-            path: "/accounts",
+            path: ROUTES.accounts,
             element: <ViewAccountsPage />,
           },
-          { path: "/accountupload", element: <AccountUploadPage /> },
-          { path: "/generatepassword", element: <GeneratePassword /> },
+          { path: ROUTES.accountUpload, element: <AccountUploadPage /> },
+          { path: ROUTES.generatePassword, element: <GeneratePassword /> },
           {
-            path: "/createpasswordreminder/:accountId",
+            path: ROUTES.createPasswordReminder(":accountId"),
             element: <CreatePasswordReminder />,
           },
         ],
