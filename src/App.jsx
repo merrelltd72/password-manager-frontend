@@ -27,7 +27,9 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <Outlet />
+        <main className="pb-28 sm:pb-24">
+          <Outlet />
+        </main>
         <Footer />
       </>
     ),
