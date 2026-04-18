@@ -1,4 +1,10 @@
-import { createContext, useContext, useMemo, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useReducer,
+  useEffect,
+} from "react";
 
 const UIStateContext = createContext(null);
 const UIDispatchContext = createContext(null);
@@ -9,6 +15,7 @@ const initialUIState = {
   isLoading: false,
   toastQueue: [],
   error: null,
+  theme: localStorage.getItem("theme") || "light",
 };
 
 export function uiReducer(state, action) {
@@ -34,6 +41,15 @@ export function uiReducer(state, action) {
       return { ...state, error: action.payload };
     case "CLEAR_ERROR":
       return { ...state, error: null };
+    case "SET_THEME":
+      localStorage.setItem("theme", action.payload);
+      return { ...state, theme: action.payload };
+    case "TOGGLE_THEME":
+      const themes = ["light", "dark", "nord"];
+      const currentIndex = themes.indexOf(state.theme);
+      const nextTheme = themes[(currentIndex + 1) % themes.length];
+      localStorage.setItem("theme", nextTheme);
+      return { ...state, theme: nextTheme };
     default:
       return state;
   }
@@ -42,6 +58,10 @@ export function uiReducer(state, action) {
 export function UIProvider({ children }) {
   const [state, dispatch] = useReducer(uiReducer, initialUIState);
   const value = useMemo(() => state, [state]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", state.theme);
+  }, [state.theme]);
 
   return (
     <UIStateContext.Provider value={value}>

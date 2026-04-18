@@ -1,4 +1,5 @@
 import { useAuthState } from "../context/AuthContext";
+import { useUIState, useUIDispatch } from "../context/UIContext";
 import LogOutButton from "./LogOutButton";
 import { Link, NavLink } from "react-router";
 import {
@@ -17,6 +18,12 @@ const authLinkClassName = ({ isActive }) =>
 
 const Header = () => {
   const { isAuthenticated, user } = useAuthState();
+  const { theme } = useUIState();
+  const dispatch = useUIDispatch();
+
+  const handleThemeToggle = () => {
+    dispatch({ type: "TOGGLE_THEME" });
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-blue-300/30 bg-blue-500/95 text-white shadow-md backdrop-blur">
@@ -27,6 +34,19 @@ const Header = () => {
         >
           Password Manager
         </Link>
+
+        <div className="flex-none gap-2">
+          <button
+            onClick={handleThemeToggle}
+            className="btn btn-ghost btn-circle"
+            title={`Current theme: ${theme}`}
+          >
+            {theme === "light" && "☀️"}
+            {theme === "dark" && "🌙"}
+            {theme === "nord" && "❄️"}
+          </button>
+          {/* Other header items */}
+        </div>
 
         {isAuthenticated ? (
           <nav className="flex w-full flex-wrap items-center gap-2 lg:w-auto lg:justify-end">
