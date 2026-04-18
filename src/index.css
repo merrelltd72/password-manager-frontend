@@ -1,4 +1,73 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, nord
+  themes:
+    light --default,
+    dark --prefersdark,
+    nord;
+}
+
+@layer components {
+  .app-page {
+    @apply container mx-auto w-full px-4;
+  }
+
+  .app-page-center {
+    @apply container mx-auto flex min-h-screen w-full items-center justify-center px-4 py-10;
+  }
+
+  .app-card {
+    @apply w-full rounded-box border border-base-300 bg-base-100 p-6 shadow-sm sm:p-8;
+  }
+
+  .app-fieldset {
+    @apply fieldset rounded-box border border-base-300 bg-base-200 p-4;
+  }
+
+  .app-fieldset-legend {
+    @apply fieldset-legend text-xl;
+  }
+
+  .app-label {
+    @apply label mb-2 block text-sm font-semibold text-base-content/80;
+  }
+
+  .app-input {
+    @apply input input-bordered w-full;
+  }
+
+  .app-textarea {
+    @apply textarea textarea-bordered w-full;
+  }
+
+  .app-select {
+    @apply select select-bordered w-full;
+  }
+
+  .app-btn-primary {
+    @apply btn btn-primary;
+  }
+
+  .app-topbar {
+    @apply sticky top-0 z-50 border-b border-base-300 bg-base-100/95 text-base-content shadow-sm backdrop-blur;
+  }
+
+  .app-nav-link {
+    @apply rounded-md border border-base-300 bg-base-100 px-3 py-1.5 text-sm font-medium transition hover:border-primary hover:text-primary;
+  }
+
+  .app-nav-link-active {
+    @apply border-primary bg-primary text-primary-content hover:text-primary-content;
+  }
+
+  .app-user-pill {
+    @apply rounded-full border border-base-300 bg-base-200 px-3 py-1 text-xs font-semibold tracking-wide text-base-content/80;
+  }
+
+  .app-footer {
+    @apply fixed bottom-0 z-40 w-full border-t border-base-300 bg-base-100/95 text-base-content shadow-sm backdrop-blur;
+  }
+
+  .app-footer-link {
+    @apply rounded-md border border-base-300 bg-base-100 px-3 py-1 text-xs font-semibold transition hover:border-primary hover:text-primary;
+  }
 }

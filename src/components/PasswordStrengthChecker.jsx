@@ -32,7 +32,9 @@ const PasswordStrengthChecker = () => {
           <label className="label text-lg text-green-600">Very Strong</label>
         );
       default:
-        <label className="label text-lg text-gray-600">Unknown</label>;
+        return (
+          <label className="label text-lg text-base-content/70">Unknown</label>
+        );
     }
   };
 
@@ -45,13 +47,15 @@ const PasswordStrengthChecker = () => {
           value={password}
           onChange={handlePasswordChange}
           placeholder="Enter password here"
-          className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+          className="app-input"
         />
       </div>
       <div>
         <strong>Password Strength:</strong> {getScoreLabel(score)}
       </div>
-      <div>{feedback && <em className="text-gray-500">{feedback}</em>}</div>
+      <div>
+        {feedback && <em className="text-base-content/70">{feedback}</em>}
+      </div>
     </>
   );
 };
