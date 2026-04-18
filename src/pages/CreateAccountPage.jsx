@@ -46,10 +46,14 @@ const CreateAccountPage = () => {
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
             <legend className="fieldset-legend text-xl">Create Account</legend>
             <div className="mb-6">
-              <label className="block text-gray-600 text-lg font-bold mb-2">
+              <label
+                htmlFor="web_app_name"
+                className="block text-gray-600 text-lg font-bold mb-2"
+              >
                 Account Name:
               </label>
               <input
+                id="web_app_name"
                 name="web_app_name"
                 type="text"
                 required
@@ -57,27 +61,38 @@ const CreateAccountPage = () => {
                 className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
               />
 
-              <label className="block text-gray-600 text-lg font-bold mb-2">
+              <label
+                htmlFor="url"
+                className="block text-gray-600 text-lg font-bold mb-2"
+              >
                 Account URL:
               </label>
               <input
+                id="url"
                 name="url"
                 type="text"
                 placeholder="ex. www.facebook.com"
                 className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
               />
 
-              <label className="block text-gray-600 text-lg font-bold mb-2">
+              <label
+                htmlFor="username"
+                className="block text-gray-600 text-lg font-bold mb-2"
+              >
                 Account Username:
               </label>
               <input
+                id="username"
                 name="username"
                 type="text"
                 required
                 className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
               />
 
-              <label className="block text-gray-600 text-lg font-bold mb-2">
+              <label
+                htmlFor="password"
+                className="block text-gray-600 text-lg font-bold mb-2"
+              >
                 Account Password:
               </label>
               <input
@@ -89,17 +104,24 @@ const CreateAccountPage = () => {
               />
               <TogglePasswordVisibility />
 
-              <label className="block text-gray-600 text-lg font-bold mb-2">
+              <label
+                htmlFor="notes"
+                className="block text-gray-600 text-lg font-bold mb-2"
+              >
                 Notes:
               </label>
               <textarea
+                id="notes"
                 name="notes"
                 rows="5"
                 cols="35"
                 className="rounded"
               ></textarea>
               <br />
-              <label className="block text-gray-600 text-lg font-bold mb-2">
+              <label
+                htmlFor="category"
+                className="block text-gray-600 text-lg font-bold mb-2"
+              >
                 Category:
               </label>
               <select name="category_id" id="category">
