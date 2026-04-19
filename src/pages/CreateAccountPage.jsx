@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
+import accountCreation from "../assets/images/account-creation.jpg";
 
 const CreateAccountPage = () => {
   const [errors, setErrors] = useState([]);
@@ -37,11 +38,14 @@ const CreateAccountPage = () => {
           </li>
         ))}
       </ul>
-      <div className="flex flex-col justify-center items-center h-screen">
-        <form onSubmit={submitHandler} className="app-card mb-4 max-w-md">
+      <div className="flex flex-col justify-center items-center h-screen ">
+        <form onSubmit={submitHandler} className="app-card-form mb-4 max-w-xl">
+          <figure>
+            <img className="object-scale-down" src={accountCreation} alt="Account Creation" />
+          </figure>
           <fieldset className="app-fieldset">
             <legend className="app-fieldset-legend">Create Account</legend>
-            <div className="mb-6">
+            <div className=" card-body mb-6">
               <label className="app-label">Account Name:</label>
               <input
                 name="web_app_name"

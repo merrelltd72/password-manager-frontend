@@ -19,6 +19,10 @@
     @apply w-full rounded-box border border-base-300 bg-base-100 p-6 shadow-sm sm:p-8;
   }
 
+  .app-card-form {
+    @apply card xl:card-side bg-base-100 shadow-sm;
+  }
+
   .app-fieldset {
     @apply fieldset rounded-box border border-base-300 bg-base-200 p-4;
   }
@@ -28,19 +32,19 @@
   }
 
   .app-label {
-    @apply label mb-2 block text-sm font-semibold text-base-content/80;
+    @apply label mb-2 block text-sm font-extrabold text-base-content/80;
   }
 
   .app-input {
-    @apply input input-bordered w-full;
+    @apply input w-full;
   }
 
   .app-textarea {
-    @apply textarea textarea-bordered w-full;
+    @apply textarea w-full;
   }
 
   .app-select {
-    @apply select select-bordered w-full;
+    @apply select w-full;
   }
 
   .app-btn-primary {
