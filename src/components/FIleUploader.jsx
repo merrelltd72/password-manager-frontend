@@ -41,28 +41,25 @@ const FIleUploader = () => {
   };
 
   return (
-    <div className="container w-full max-w-lg mt-4">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-sm px-8 pt-6 pb-8 mb-4"
-      >
+    <div className="app-page mt-4">
+      <form onSubmit={handleSubmit} className="app-card max-w-lg">
         <input
           type="file"
           accept=".csv, .xlsx, .xls"
           onChange={handleFileChange}
           required
+          className="file-input file-input-bordered w-full"
         />
         <br />
         <br />
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 mb-4 items-center flex justify-between"
-        >
+        <button type="submit" className="app-btn-primary mb-4">
           Upload
         </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
+      {error && <p className="alert alert-error max-w-lg text-sm">{error}</p>}
+      {success && (
+        <p className="alert alert-success mt-2 max-w-lg text-sm">{success}</p>
+      )}
     </div>
   );
 };

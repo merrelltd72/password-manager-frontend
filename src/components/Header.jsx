@@ -9,12 +9,7 @@ import {
 } from "../constants/routes";
 
 const authLinkClassName = ({ isActive }) =>
-  [
-    "rounded-md border px-3 py-1.5 text-sm font-medium transition",
-    isActive
-      ? "border-white bg-white text-blue-700"
-      : "border-white/35 bg-white/10 hover:bg-white hover:text-blue-700",
-  ].join(" ");
+  ["app-nav-link", isActive ? "app-nav-link-active" : ""].join(" ");
 
 const Header = () => {
   const { isAuthenticated, user } = useAuthState();
@@ -26,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-blue-300/30 bg-blue-500/95 text-white shadow-md backdrop-blur">
+    <header className="app-topbar">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
         <Link
           to={ROUTES.home}
@@ -38,7 +33,7 @@ const Header = () => {
         <div className="flex-none gap-2">
           <button
             onClick={handleThemeToggle}
-            className="btn btn-ghost btn-circle"
+            className="btn btn-circle btn-ghost btn-sm"
             title={`Current theme: ${theme}`}
           >
             {theme === "light" && "☀️"}
@@ -50,7 +45,7 @@ const Header = () => {
 
         {isAuthenticated ? (
           <nav className="flex w-full flex-wrap items-center gap-2 lg:w-auto lg:justify-end">
-            <p className="rounded-full border border-white/35 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide">
+            <p className="app-user-pill">
               Welcome {user?.username || user?.email}!
             </p>
 
@@ -77,8 +72,8 @@ const Header = () => {
                 to={item.to}
                 className={
                   item.to === ROUTES.login
-                    ? "rounded-md border border-white bg-white px-3 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
-                    : "rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-semibold transition hover:bg-white hover:text-blue-700"
+                    ? "btn btn-primary btn-sm"
+                    : "app-nav-link"
                 }
               >
                 {item.label}
