@@ -5,10 +5,7 @@ const GoogleLoginButton = () => {
     window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/google_oauth2`;
   };
   return (
-    <button
-      onClick={handlelogin}
-      className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 mb-4 items-center flex justify-between"
-    >
+    <button onClick={handlelogin} className="btn btn-primary mb-4">
       <FaGoogle /> &nbsp; Login with Google
     </button>
   );

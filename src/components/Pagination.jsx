@@ -31,7 +31,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
 
   return (
     <nav className="mt-8 mb-4 space-y-3" aria-label="Pagination">
-      <p className="text-center text-sm text-gray-600">
+      <p className="text-center text-sm text-base-content/70">
         Page {currentPage} of {pageCount}
       </p>
 
@@ -40,7 +40,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
           type="button"
           onClick={() => goToPage(1)}
           disabled={currentPage === 1}
-          className="rounded-md border border-blue-500 px-3 py-2 text-sm font-medium disabled:opacity-40"
+          className="btn btn-outline btn-sm disabled:opacity-40"
           aria-label="First page"
         >
           First
@@ -50,7 +50,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
           type="button"
           onClick={() => goToPage(currentPage - 1)}
           disabled={currentPage === 1}
-          className="rounded-md border border-blue-500 px-3 py-2 text-sm font-medium disabled:opacity-40"
+          className="btn btn-outline btn-sm disabled:opacity-40"
           aria-label="Previous page"
         >
           Prev
@@ -61,7 +61,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
             <button
               type="button"
               onClick={() => goToPage(1)}
-              className="w-10 h-10 border border-blue-500 rounded-md"
+              className="btn btn-outline btn-sm btn-square"
             >
               1
             </button>
@@ -74,10 +74,8 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
             key={page}
             type="button"
             onClick={() => goToPage(page)}
-            className={`w-10 h-10 border border-blue-500 rounded-md ${
-              page === currentPage
-                ? "bg-blue-500 text-white"
-                : "hover:bg-blue-500 hover:text-white"
+            className={`btn btn-sm btn-square ${
+              page === currentPage ? "btn-primary" : "btn-outline"
             }`}
             aria-current={page === currentPage ? "page" : undefined}
           >
@@ -91,7 +89,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
             <button
               type="button"
               onClick={() => goToPage(pageCount)}
-              className="w-10 h-10 border border-blue-500 rounded-md"
+              className="btn btn-outline btn-sm btn-square"
             >
               {pageCount}
             </button>
@@ -102,7 +100,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
           type="button"
           onClick={() => goToPage(currentPage + 1)}
           disabled={currentPage === pageCount}
-          className="rounded-md border border-blue-500 px-3 py-2 text-sm font-medium disabled:opacity-40"
+          className="btn btn-outline btn-sm disabled:opacity-40"
           aria-label="Next page"
         >
           Next
@@ -112,7 +110,7 @@ const Pagination = ({ pageCount = 0, currentPage = 1, setCurrentPage }) => {
           type="button"
           onClick={() => goToPage(pageCount)}
           disabled={currentPage === pageCount}
-          className="rounded-md border border-blue-500 px-3 py-2 text-sm font-medium disabled:opacity-40"
+          className="btn btn-outline btn-sm disabled:opacity-40"
           aria-label="Last page"
         >
           Last

@@ -10,13 +10,10 @@ const CreatePasswordReminder = () => {
   const appName = state?.app_name;
 
   return (
-    <main
-      id="create-password-reminder"
-      className="container mx-auto flex min-h-screen w-full items-center justify-center px-4 py-10"
-    >
-      <section className="w-full max-w-xl rounded bg-white px-8 pt-6 pb-8 shadow-md">
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend text-xl">
+    <main id="create-password-reminder" className="app-page-center">
+      <section className="app-card max-w-xl">
+        <fieldset className="app-fieldset">
+          <legend className="app-fieldset-legend">
             Create Password Reminder
           </legend>
 
