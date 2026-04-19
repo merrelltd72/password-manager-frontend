@@ -41,48 +41,33 @@ const LoginPage = () => {
   };
 
   return (
-    <div
-      id="login"
-      className="container mx-auto w-full px-4 place-content-center"
-    >
-      <ul>
+    <div id="login" className="app-page">
+      <ul className="mx-auto mt-6 w-full max-w-md space-y-2">
         {errors.map((error) => (
-          <li key={error}>{error}</li>
+          <li key={error} className="alert alert-error text-sm">
+            {error}
+          </li>
         ))}
       </ul>
       <div className="flex flex-col justify-center items-center h-screen">
-        <form
-          onSubmit={submitHandler}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        >
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-sm border p-4">
-            <legend className="fieldset-legend text-xl">Login</legend>
+        <form onSubmit={submitHandler} className="app-card mb-4 max-w-md">
+          <fieldset className="app-fieldset">
+            <legend className="app-fieldset-legend">Login</legend>
             <div className="mb-4">
-              <label className="label block text-gray-600 text-lg font-bold mb-2">
-                Email address:
-              </label>
+              <label className="app-label">Email address:</label>
               <input
                 name="email"
                 type="email"
                 placeholder="user.email@example.com"
-                className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+                className="app-input"
               />
               <br />
               <br />
-              <label className="label block text-gray-600 text-lg font-bold mb-2">
-                Password:
-              </label>
-              <input
-                name="password"
-                type="password"
-                className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-              />
+              <label className="app-label">Password:</label>
+              <input name="password" type="password" className="app-input" />
               <br />
               <br />
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
-              >
+              <button type="submit" className="app-btn-primary">
                 Login
               </button>
               <div className="divider">OR</div>

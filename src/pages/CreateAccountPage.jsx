@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TogglePasswordVisibility from "../components/TogglePasswordVisibility";
+import accountCreation from "../assets/images/account-creation.jpg";
 
 const CreateAccountPage = () => {
   const [errors, setErrors] = useState([]);
@@ -29,15 +30,23 @@ const CreateAccountPage = () => {
   };
 
   return (
-    <div
-      id="createAccount"
-      className="container mx-auto w-full px-4 place-content-center"
-    >
-      <ul>
+    <div id="createAccount" className="app-page">
+      <ul className="mx-auto mt-6 w-full max-w-md space-y-2">
         {errors.map((error) => (
-          <li key={error}>{error}</li>
+          <li key={error} className="alert alert-error text-sm">
+            {error}
+          </li>
         ))}
       </ul>
+      <div className="flex flex-col justify-center items-center h-screen ">
+        <form onSubmit={submitHandler} className="app-card-form mb-4 max-w-xl">
+          <figure>
+            <img className="object-scale-down" src={accountCreation} alt="Account Creation" />
+          </figure>
+          <fieldset className="app-fieldset">
+            <legend className="app-fieldset-legend">Create Account</legend>
+            <div className=" card-body mb-6">
+              <label className="app-label">Account Name:</label>
       <div className="flex flex-col justify-center items-center h-screen">
         <form
           onSubmit={submitHandler}
@@ -58,9 +67,10 @@ const CreateAccountPage = () => {
                 type="text"
                 required
                 placeholder="ex. Facebook"
-                className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+                className="app-input"
               />
 
+              <label className="app-label">Account URL:</label>
               <label
                 htmlFor="url"
                 className="block text-gray-600 text-lg font-bold mb-2"
@@ -72,9 +82,10 @@ const CreateAccountPage = () => {
                 name="url"
                 type="text"
                 placeholder="ex. www.facebook.com"
-                className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+                className="app-input mb-2"
               />
 
+              <label className="app-label">Account Username:</label>
               <label
                 htmlFor="username"
                 className="block text-gray-600 text-lg font-bold mb-2"
@@ -86,9 +97,10 @@ const CreateAccountPage = () => {
                 name="username"
                 type="text"
                 required
-                className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+                className="app-input mb-2"
               />
 
+              <label className="app-label">Account Password:</label>
               <label
                 htmlFor="password"
                 className="block text-gray-600 text-lg font-bold mb-2"
@@ -100,10 +112,11 @@ const CreateAccountPage = () => {
                 type="password"
                 id="password"
                 required
-                className="shadow appearance-none border rounded-sm w-full mb-2 py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+                className="app-input mb-2"
               />
               <TogglePasswordVisibility />
 
+              <label className="app-label">Notes:</label>
               <label
                 htmlFor="notes"
                 className="block text-gray-600 text-lg font-bold mb-2"
@@ -115,9 +128,11 @@ const CreateAccountPage = () => {
                 name="notes"
                 rows="5"
                 cols="35"
-                className="rounded"
+                className="app-textarea"
               ></textarea>
               <br />
+              <label className="app-label">Category:</label>
+              <select name="category_id" id="category" className="app-select">
               <label
                 htmlFor="category"
                 className="block text-gray-600 text-lg font-bold mb-2"
@@ -132,10 +147,7 @@ const CreateAccountPage = () => {
 
               <br />
               <br />
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
-              >
+              <button type="submit" className="app-btn-primary">
                 Create Account
               </button>
             </div>

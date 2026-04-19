@@ -15,13 +15,19 @@ export default function PasswordReminders({ accountId }) {
 
   return (
     <div className="flex flex-col gap-4">
+      <label className="app-label mb-0">Reminder Date:</label>
       <DatePicker
         selected={reminderDate}
         onChange={(date) => setReminderDate(date)}
         minDate={new Date()}
         placeholderText="Select a date to set a password reminder"
+        className="app-input"
       />
-      <button onClick={handleSubmit} disabled={!reminderDate || !accountId}>
+      <button
+        onClick={handleSubmit}
+        disabled={!reminderDate || !accountId}
+        className="app-btn-primary disabled:cursor-not-allowed disabled:opacity-60"
+      >
         Create Reminder
       </button>
     </div>

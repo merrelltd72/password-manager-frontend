@@ -22,7 +22,7 @@ const LogOutButton = () => {
   return (
     <button
       onClick={handleClick}
-      className="flex items-center rounded-md border border-white/35 bg-white/10 px-3 py-1.5 text-sm font-semibold text-white transition hover:bg-white hover:text-blue-700"
+      className="btn btn-outline btn-sm"
       aria-label="Log out"
     >
       <IoIosLogOut />

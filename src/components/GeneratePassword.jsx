@@ -28,99 +28,89 @@ const GeneratePassword = () => {
 
   const handleCopy = () => {
     if (!generatedPassword) return;
-    navigator.clipboard.writeText(generatedPassword).then(() => {
-      toast.success("Password copied to clipboard!");
-    }).catch(() => {
-      toast.error("Failed to copy password. Please copy it manually.");
-    });
+    navigator.clipboard
+      .writeText(generatedPassword)
+      .then(() => {
+        toast.success("Password copied to clipboard!");
+      })
+      .catch(() => {
+        toast.error("Failed to copy password. Please copy it manually.");
+      });
   };
 
   return (
-    <div
-      id="generatePassword"
-      className="container mx-auto px-4 w-full place-content-center"
-    >
+    <div id="generatePassword" className="app-page">
       <div className="flex flex-col justify-center items-center h-screen">
-        <form
-          onSubmit={submitHandler}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        >
-          <fieldset className="fieldset bg-base-200 border-base-200 rounded-box border w-sm p-4">
-            <legend className="fieldset-legend text-xl">
-              Generate a Password
-            </legend>
+        <form onSubmit={submitHandler} className="app-card mb-4 max-w-md">
+          <fieldset className="app-fieldset">
+            <legend className="app-fieldset-legend">Generate a Password</legend>
             <div>
               <input
-                checked
+                checked={upperCase}
                 name="upperCase"
                 type="checkbox"
                 value="true"
                 onChange={() => setUpperCase(!upperCase)}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="checkbox checkbox-primary checkbox-sm"
               />
-              <label className="label text-gray-600 text-sm font-bold ml-1 mb-2">
+              <label className="ml-2 text-sm font-semibold text-base-content/80">
                 Uppercase Letters
               </label>
             </div>
 
             <div>
               <input
-                checked
+                checked={lowerCase}
                 name="lowerCase"
                 type="checkbox"
                 value="true"
                 onChange={() => setLowerCase(!lowerCase)}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="checkbox checkbox-primary checkbox-sm"
               />
-              <label className="label text-gray-600 text-sm font-bold ml-1 mb-2">
+              <label className="ml-2 text-sm font-semibold text-base-content/80">
                 Lowercase Letters
               </label>
             </div>
 
             <div>
               <input
-                checked
+                checked={numbers}
                 name="numbers"
                 type="checkbox"
                 value="true"
                 onChange={() => setNumbers(!numbers)}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="checkbox checkbox-primary checkbox-sm"
               />
-              <label className="label text-gray-600 text-sm font-bold ml-1 mb-2">
+              <label className="ml-2 text-sm font-semibold text-base-content/80">
                 Numbers
               </label>
             </div>
 
             <div>
               <input
-                checked
+                checked={specialChars}
                 name="specialChars"
                 type="checkbox"
                 value="true"
                 onChange={() => setSpecialChars(!specialChars)}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="checkbox checkbox-primary checkbox-sm"
               />
-              <label className="label text-gray-600 text-sm font-bold ml-1 mb-2">
+              <label className="ml-2 text-sm font-semibold text-base-content/80">
                 Special Characters
               </label>
             </div>
 
-            <label className=" label block text-gray-600 text-lg font-bold mt-2 mb-2">
-              Password Length:
-            </label>
+            <label className="app-label mt-2">Password Length:</label>
             <input
               name="length"
               type="number"
               min="8"
               onChange={(e) => setLength(e.target.value)}
-              className="shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline mb-2"
+              className="app-input mb-2"
             />
             <br />
 
-            <button
-              type="submit"
-              className="btn bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4 mb-2"
-            >
+            <button type="submit" className="app-btn-primary mb-2">
               Generate Password
             </button>
             <br />
@@ -133,12 +123,12 @@ const GeneratePassword = () => {
                 value={generatedPassword}
                 name="generatedPassword"
                 id="generatedPassword"
-                className=" input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline mb-2"
+                className="app-input mb-2"
               />
               <button
                 type="button"
                 onClick={handleCopy}
-                className="btn bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded-sm py-2 px-3 mb-2"
+                className="btn btn-outline btn-sm"
                 title="Copy to clipboard"
               >
                 Copy

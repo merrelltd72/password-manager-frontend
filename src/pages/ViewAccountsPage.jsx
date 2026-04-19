@@ -6,7 +6,6 @@ import ViewAccountPage from "./ViewAccountPage";
 import Pagination from "../components/Pagination";
 import useAccountFetcher from "../components/useAccountFetcher";
 import { useClientPagination } from "../hooks/useClientPagination";
-import { usePaginationDispatch } from "../context/PaginationContext";
 import { useUIDispatch } from "../context/UIContext";
 
 const CATEGORY_LABELS = { 1: "Personal", 2: "Work", 3: "Shared" };
@@ -15,7 +14,6 @@ const ViewAccountsPage = () => {
   const location = useLocation();
   const { loading, error, accounts, refetch } = useAccountFetcher();
   const uiDispatch = useUIDispatch();
-  const paginationDispatch = usePaginationDispatch();
 
   const [currentAccount, setCurrentAccount] = useState({});
   const [search, setSearch] = useState("");
@@ -72,13 +70,16 @@ const ViewAccountsPage = () => {
   }
 
   if (error) {
-    return <div className="text-center text-red-600 p-6">Error: {error}</div>;
+    return (
+      <div className="p-6">
+        <div className="alert alert-error max-w-lg mx-auto">Error: {error}</div>
+      </div>
+    );
   }
 
   return (
-    <div id="view-accounts" className="container w-full max-w-xlg">
-      <h1>View All Accounts</h1>
-      <br />
+    <div id="view-accounts" className="app-page max-w-7xl py-6">
+      <h1 className="mb-4 text-2xl font-bold">View All Accounts</h1>
 
       <div className="flex flex-col sm:flex-row gap-3 mb-4">
         <input
@@ -108,45 +109,45 @@ const ViewAccountsPage = () => {
       </div>
 
       {filteredAccounts.length === 0 ? (
-        <p className="text-center text-gray-500 mt-8">No accounts found.</p>
+        <p className="mt-8 text-center text-base-content/70">
+          No accounts found.
+        </p>
       ) : (
         <>
-          <div className="w-full grid md:grid-cols-3 md:gap-6">
+          <div className="grid w-full gap-4 md:grid-cols-3 md:gap-6">
             {paginatedItems.map((account) => (
               <div
                 key={account.id}
-                className="max-w-sm p-6 bg-white border border-blue-700 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+                className="card border border-base-300 bg-base-100 shadow-sm"
               >
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Account Name: {account.web_app_name}
-                </p>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  URL: {account.url}
-                </p>
-                {account.category_id && (
-                  <span className="badge badge-outline mb-3">
-                    {CATEGORY_LABELS[account.category_id] ?? "Unknown"}
-                  </span>
-                )}
-                <br />
-                <button
-                  onClick={() => handleOpenModal(account)}
-                  type="button"
-                  className="text-white bg-linear-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                >
-                  View
-                </button>
-                <br />
-                <Link
-                  to={`/createpasswordreminder/${account.id}`}
-                  state={{
-                    app_name: account.web_app_name,
-                  }}
-                >
-                  <button className="text-white bg-linear-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-linear-to-br focus:ring-4 focus:outline-hidden focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                    Create Password Update Reminder
+                <div className="card-body gap-3 p-6">
+                  <p className="text-base-content/80">
+                    Account Name: {account.web_app_name}
+                  </p>
+                  <p className="text-base-content/80">URL: {account.url}</p>
+                  {account.category_id && (
+                    <span className="badge badge-outline">
+                      {CATEGORY_LABELS[account.category_id] ?? "Unknown"}
+                    </span>
+                  )}
+                  <button
+                    onClick={() => handleOpenModal(account)}
+                    type="button"
+                    className="btn btn-primary btn-sm w-fit"
+                  >
+                    View
                   </button>
-                </Link>
+                  <Link
+                    to={`/createpasswordreminder/${account.id}`}
+                    state={{
+                      app_name: account.web_app_name,
+                    }}
+                  >
+                    <button className="btn btn-outline btn-primary btn-sm w-full sm:w-fit">
+                      Create Password Update Reminder
+                    </button>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

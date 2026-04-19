@@ -1,4 +1,3 @@
- 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -49,47 +48,47 @@ const ViewAccountPage = ({ account, onClose }) => {
   return (
     <div>
       <form onSubmit={handleUpdate} className="form">
-        <fieldset className="fieldset">
-          <legend className="fieldset-legend text-xl">
+        <fieldset className="app-fieldset">
+          <legend className="app-fieldset-legend">
             {account.web_app_name}
           </legend>
-          <label className="label">Account Name:</label>
+          <label className="app-label">Account Name:</label>
           <input
             defaultValue={account.web_app_name}
             name="web_app_name"
             type="text"
-            className="input"
+            className="app-input"
           />
 
-          <label className="label">Account URL:</label>
+          <label className="app-label">Account URL:</label>
           <input
             defaultValue={account.url}
             name="url"
             type="text"
-            className="input"
+            className="app-input"
           />
 
-          <label className="label">Account Username:</label>
+          <label className="app-label">Account Username:</label>
           <input
             defaultValue={account.username}
             name="username"
             type="text"
-            className="input"
+            className="app-input"
           />
 
-          <label className="label">Account Password:</label>
+          <label className="app-label">Account Password:</label>
           <div className="flex gap-2 items-center">
             <input
               defaultValue={account.password}
               name="password"
               type="password"
               id="password"
-              className="input flex-1"
+              className="app-input flex-1"
             />
             <button
               type="button"
               onClick={handleCopyPassword}
-              className="btn btn-sm btn-ghost"
+              className="btn btn-sm btn-outline"
               title="Copy password to clipboard"
             >
               Copy
@@ -102,11 +101,11 @@ const ViewAccountPage = ({ account, onClose }) => {
             defaultValue={account.notes}
             name="notes"
             type="text"
-            className="textarea h-24"
+            className="app-textarea h-24"
           />
           <br />
           <br />
-          <button className="btn btn-info mt-4" type="submit">
+          <button className="app-btn-primary mt-4" type="submit">
             Update Account
           </button>
         </fieldset>

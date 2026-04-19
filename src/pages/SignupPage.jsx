@@ -47,60 +47,37 @@ const SignupPage = () => {
   };
 
   return (
-    <div
-      id="signup"
-      className="container mx-auto w-full px-4 place-content-center"
-    >
-      <ul>
+    <div id="signup" className="app-page">
+      <ul className="mx-auto mt-6 w-full max-w-md space-y-2">
         {errors.map((error) => (
-          <li key={error}>{error}</li>
+          <li key={error} className="alert alert-error text-sm">
+            {error}
+          </li>
         ))}
       </ul>
       <div className="flex flex-col justify-center items-center h-screen">
-        <form
-          onSubmit={submitHandler}
-          className="bg-white shadow-md rounded-sm px-8 pt-6 pb-8 mb-4"
-        >
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-sm border p-4">
-            <legend className="fieldset-legend text-xl">Sign Up</legend>
+        <form onSubmit={submitHandler} className="app-card mb-4 max-w-md">
+          <fieldset className="app-fieldset">
+            <legend className="app-fieldset-legend">Sign Up</legend>
             <div className="mb-4">
-              <label className="label block text-gray-600 text-lg font-bold mb-2">
-                Username:
-              </label>
-              <input
-                name="username"
-                type="text"
-                className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-              />
+              <label className="app-label">Username:</label>
+              <input name="username" type="text" className="app-input" />
               <br />
-              <label className="label block text-gray-600 text-lg font-bold mb-2">
-                Email Address:
-              </label>
-              <input
-                name="email"
-                type="email"
-                className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
-              />
+              <label className="app-label">Email Address:</label>
+              <input name="email" type="email" className="app-input" />
               <br />
-              <label className="label block text-gray-600 text-lg font-bold mb-2">
-                Password:
-              </label>
+              <label className="app-label">Password:</label>
               <PasswordStrengthChecker />
               <br />
-              <label className=" label block text-gray-600 text-lg font-bold mb-2">
-                Password Confirmation:
-              </label>
+              <label className="app-label">Password Confirmation:</label>
               <input
                 name="password_confirmation"
                 type="password"
-                className="input shadow appearance-none border rounded-sm w-full py-1 px-3 text-gray-600 leading-tight focus:outline-hidden focus:shadow-outline"
+                className="app-input"
               />
               <br />
               <br />
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-green-700 text-white font-bold rounded-sm py-2 px-4"
-              >
+              <button type="submit" className="app-btn-primary">
                 Signup
               </button>
             </div>
