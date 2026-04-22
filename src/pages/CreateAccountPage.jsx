@@ -41,24 +41,16 @@ const CreateAccountPage = () => {
       <div className="flex flex-col justify-center items-center h-screen ">
         <form onSubmit={submitHandler} className="app-card-form mb-4 max-w-xl">
           <figure>
-            <img className="object-scale-down" src={accountCreation} alt="Account Creation" />
+            <img
+              className="object-scale-down"
+              src={accountCreation}
+              alt="Account Creation"
+            />
           </figure>
           <fieldset className="app-fieldset">
             <legend className="app-fieldset-legend">Create Account</legend>
             <div className=" card-body mb-6">
-              <label className="app-label">Account Name:</label>
-      <div className="flex flex-col justify-center items-center h-screen">
-        <form
-          onSubmit={submitHandler}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        >
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-            <legend className="fieldset-legend text-xl">Create Account</legend>
-            <div className="mb-6">
-              <label
-                htmlFor="web_app_name"
-                className="block text-gray-600 text-lg font-bold mb-2"
-              >
+              <label htmlFor="web_app_name" className="app_label">
                 Account Name:
               </label>
               <input
@@ -70,11 +62,7 @@ const CreateAccountPage = () => {
                 className="app-input"
               />
 
-              <label className="app-label">Account URL:</label>
-              <label
-                htmlFor="url"
-                className="block text-gray-600 text-lg font-bold mb-2"
-              >
+              <label htmlFor="url" className="app-label">
                 Account URL:
               </label>
               <input
@@ -85,11 +73,7 @@ const CreateAccountPage = () => {
                 className="app-input mb-2"
               />
 
-              <label className="app-label">Account Username:</label>
-              <label
-                htmlFor="username"
-                className="block text-gray-600 text-lg font-bold mb-2"
-              >
+              <label htmlFor="username" className="app-label">
                 Account Username:
               </label>
               <input
@@ -100,11 +84,7 @@ const CreateAccountPage = () => {
                 className="app-input mb-2"
               />
 
-              <label className="app-label">Account Password:</label>
-              <label
-                htmlFor="password"
-                className="block text-gray-600 text-lg font-bold mb-2"
-              >
+              <label htmlFor="password" className="app=label">
                 Account Password:
               </label>
               <input
@@ -116,11 +96,7 @@ const CreateAccountPage = () => {
               />
               <TogglePasswordVisibility />
 
-              <label className="app-label">Notes:</label>
-              <label
-                htmlFor="notes"
-                className="block text-gray-600 text-lg font-bold mb-2"
-              >
+              <label htmlFor="notes" className="app-label">
                 Notes:
               </label>
               <textarea
@@ -131,15 +107,10 @@ const CreateAccountPage = () => {
                 className="app-textarea"
               ></textarea>
               <br />
-              <label className="app-label">Category:</label>
-              <select name="category_id" id="category" className="app-select">
-              <label
-                htmlFor="category"
-                className="block text-gray-600 text-lg font-bold mb-2"
-              >
+              <label htmlFor="category" className="app-label">
                 Category:
               </label>
-              <select name="category_id" id="category">
+              <select name="category_id" id="category" className="app-select">
                 <option value="1">Personal</option>
                 <option value="2">Work</option>
                 <option value="3">Shared</option>
