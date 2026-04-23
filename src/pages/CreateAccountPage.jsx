@@ -41,13 +41,20 @@ const CreateAccountPage = () => {
       <div className="flex flex-col justify-center items-center h-screen ">
         <form onSubmit={submitHandler} className="app-card-form mb-4 max-w-xl">
           <figure>
-            <img className="object-scale-down" src={accountCreation} alt="Account Creation" />
+            <img
+              className="object-scale-down"
+              src={accountCreation}
+              alt="Account Creation"
+            />
           </figure>
           <fieldset className="app-fieldset">
             <legend className="app-fieldset-legend">Create Account</legend>
             <div className=" card-body mb-6">
-              <label className="app-label">Account Name:</label>
+              <label htmlFor="web_app_name" className="app_label">
+                Account Name:
+              </label>
               <input
+                id="web_app_name"
                 name="web_app_name"
                 type="text"
                 required
@@ -55,23 +62,31 @@ const CreateAccountPage = () => {
                 className="app-input"
               />
 
-              <label className="app-label">Account URL:</label>
+              <label htmlFor="url" className="app-label">
+                Account URL:
+              </label>
               <input
+                id="url"
                 name="url"
                 type="text"
                 placeholder="ex. www.facebook.com"
                 className="app-input mb-2"
               />
 
-              <label className="app-label">Account Username:</label>
+              <label htmlFor="username" className="app-label">
+                Account Username:
+              </label>
               <input
+                id="username"
                 name="username"
                 type="text"
                 required
                 className="app-input mb-2"
               />
 
-              <label className="app-label">Account Password:</label>
+              <label htmlFor="password" className="app=label">
+                Account Password:
+              </label>
               <input
                 name="password"
                 type="password"
@@ -81,15 +96,20 @@ const CreateAccountPage = () => {
               />
               <TogglePasswordVisibility />
 
-              <label className="app-label">Notes:</label>
+              <label htmlFor="notes" className="app-label">
+                Notes:
+              </label>
               <textarea
+                id="notes"
                 name="notes"
                 rows="5"
                 cols="35"
                 className="app-textarea"
               ></textarea>
               <br />
-              <label className="app-label">Category:</label>
+              <label htmlFor="category" className="app-label">
+                Category:
+              </label>
               <select name="category_id" id="category" className="app-select">
                 <option value="1">Personal</option>
                 <option value="2">Work</option>
