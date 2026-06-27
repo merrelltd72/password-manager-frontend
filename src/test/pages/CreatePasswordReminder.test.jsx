@@ -70,8 +70,6 @@ describe("CreatePasswordReminder", () => {
 
     render(<CreatePasswordReminder />);
 
-    expect(
-      screen.getByText(/please go back to accounts and choose an account/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/invalid account selected/i)).toBeInTheDocument();
   });
 });

@@ -50,7 +50,7 @@ const CreateAccountPage = () => {
           <fieldset className="app-fieldset">
             <legend className="app-fieldset-legend">Create Account</legend>
             <div className=" card-body mb-6">
-              <label htmlFor="web_app_name" className="app_label">
+              <label htmlFor="web_app_name" className="app-label">
                 Account Name:
               </label>
               <input
@@ -84,7 +84,7 @@ const CreateAccountPage = () => {
                 className="app-input mb-2"
               />
 
-              <label htmlFor="password" className="app=label">
+              <label htmlFor="password" className="app-label">
                 Account Password:
               </label>
               <input

@@ -3,8 +3,6 @@ import { render, screen } from "@testing-library/react";
 import LandingPage from "../../pages/LandingPage";
 
 describe("LandingPage", () => {
-  const originalLocation = window.location;
-
   beforeEach(() => {
     localStorage.clear();
     window.history.replaceState({}, "", "/");
