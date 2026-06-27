@@ -35,7 +35,13 @@ export default defineConfig([
     files: ["**/__tests__/**/*.{js,jsx}", "**/*.test.{js,jsx}"],
     plugins: { jest: pluginJest },
     languageOptions: {
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: { jsx: true },
+      },
       globals: {
+        ...globals.browser,
         ...pluginJest.environments.globals.globals,
       },
     },
