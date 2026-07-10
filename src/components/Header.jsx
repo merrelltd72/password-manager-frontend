@@ -1,7 +1,7 @@
 import { useAuthState } from "../context/AuthContext";
 import { useUIState, useUIDispatch } from "../context/UIContext";
 import LogOutButton from "./LogOutButton";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router-dom";
 import {
   ROUTES,
   AUTHENTICATED_NAV_ITEMS,

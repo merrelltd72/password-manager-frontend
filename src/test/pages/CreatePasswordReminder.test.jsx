@@ -8,7 +8,7 @@ const mockPasswordReminders = vi.fn(({ accountId }) => (
   <div data-testid="password-reminders-mock">Account ID: {accountId}</div>
 ));
 
-vi.mock("react-router", () => ({
+vi.mock("react-router-dom", () => ({
   useLocation: () => mockUseLocation(),
   useParams: () => mockUseParams(),
 }));

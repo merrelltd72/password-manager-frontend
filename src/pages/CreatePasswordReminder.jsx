@@ -1,6 +1,5 @@
 import PasswordReminders from "../components/PasswordReminders";
-import { useLocation } from "react-router";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router-dom";
 
 const CreatePasswordReminder = () => {
   const { state } = useLocation();

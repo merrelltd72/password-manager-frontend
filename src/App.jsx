@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
 import { ROUTES } from "./constants/routes";

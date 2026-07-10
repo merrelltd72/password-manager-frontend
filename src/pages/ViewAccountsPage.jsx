@@ -1,6 +1,6 @@
 // src/pages/ViewAccountsPage.jsx
 import { useState, useMemo, useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom";
 import AccountModal from "../components/AccountModal";
 import ViewAccountPage from "./ViewAccountPage";
 import Pagination from "../components/Pagination";
