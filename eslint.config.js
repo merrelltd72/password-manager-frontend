@@ -28,6 +28,10 @@ export default defineConfig([
       "react/prop-types": "off",
       "react/jsx-no-target-blank": "off",
       "react/react-in-jsx-scope": "off",
+      // Flags idiomatic data-fetching effects (e.g. setLoading(true) before an
+      // await), including the pattern shown in React's own docs. Part of the
+      // experimental React Compiler ruleset, not applicable here.
+      "react-hooks/set-state-in-effect": "off",
     },
   },
   // Test files config

@@ -25,7 +25,7 @@ const AuthBootstrap = ({ children }) => {
             user: res.data?.logged_in ? (res.data.user ?? null) : null,
           },
         });
-      } catch (error) {
+      } catch {
         if (!isMounted) return;
         dispatch({ type: "RESTORE_SESSION", payload: { user: null } });
       }

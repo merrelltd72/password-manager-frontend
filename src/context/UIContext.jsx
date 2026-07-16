@@ -44,12 +44,13 @@ export function uiReducer(state, action) {
     case "SET_THEME":
       localStorage.setItem("theme", action.payload);
       return { ...state, theme: action.payload };
-    case "TOGGLE_THEME":
+    case "TOGGLE_THEME": {
       const themes = ["light", "dark", "nord"];
       const currentIndex = themes.indexOf(state.theme);
       const nextTheme = themes[(currentIndex + 1) % themes.length];
       localStorage.setItem("theme", nextTheme);
       return { ...state, theme: nextTheme };
+    }
     default:
       return state;
   }
