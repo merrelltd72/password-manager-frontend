@@ -17,6 +17,8 @@ const AccountUploadPage = lazy(() => import("./pages/AccountUploadPage"));
 const CreatePasswordReminder = lazy(
   () => import("./pages/CreatePasswordReminder"),
 );
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const PageNotFoundPage = lazy(() => import("./pages/PageNotFoundPage"));
 
 axios.defaults.baseURL = String(`${import.meta.env.VITE_API_BASE_URL}`);
@@ -40,6 +42,7 @@ const router = createBrowserRouter([
       {
         element: <ProtectedRoute />,
         children: [
+          { path: ROUTES.dashboard, element: <DashboardPage /> },
           { path: ROUTES.create, element: <CreateAccountPage /> },
           {
             path: ROUTES.accounts,
@@ -51,6 +54,7 @@ const router = createBrowserRouter([
             path: ROUTES.createPasswordReminder(":accountId"),
             element: <CreatePasswordReminder />,
           },
+          { path: ROUTES.profile, element: <ProfilePage /> },
         ],
       },
       { path: "*", element: <PageNotFoundPage /> },
